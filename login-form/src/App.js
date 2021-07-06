@@ -1,7 +1,6 @@
 // import "./App.css";
-import { useTheme, ThemeProvider, withTheme } from "@emotion/react";
+import { ThemeProvider } from "@emotion/react";
 import theme from "@rebass/preset";
-import { Box, Heading, Button } from "rebass";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Login } from "./components/page-components/Login";
 
