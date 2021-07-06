@@ -1,12 +1,21 @@
-import "./App.css";
+// import "./App.css";
 import { useTheme, ThemeProvider, withTheme } from "@emotion/react";
 import theme from "@rebass/preset";
+import { Box, Heading, Button } from "rebass";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Login } from "./components/page-components/Login";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">test</div>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Route name="login" handler={Login}>
+          <Login></Login>
+        </Route>
+        {/* To redirect to /login route */}
+        <Redirect exact from="/" to="login" />
+      </ThemeProvider>
+    </Router>
   );
 }
 
