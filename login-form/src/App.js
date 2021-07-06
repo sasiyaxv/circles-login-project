@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Route name="login" handler={Login}>
+        <Route name="login">
           <Login></Login>
         </Route>
         {/* To redirect to /login route */}
