@@ -7,7 +7,9 @@ app.use(cors());
 
 app.get("/user-service/user-details", (req, res) => {
   res.json({
-    message: "User details",
+    email: "admin@circles.asia",
+    name: "Admin 1",
+    origin: "Colombo",
   });
 });
 
