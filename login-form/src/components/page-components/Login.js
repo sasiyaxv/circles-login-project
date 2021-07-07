@@ -3,14 +3,20 @@ import { Box, Heading, Button } from "rebass";
 import { Label, Input } from "@rebass/forms";
 
 export const Login = () => {
-  const [emailAddress, setEmailAddress] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [passWord, setPassWord] = useState("");
+
+  const BASE_URL = "http://localhost:5000";
 
   // Function to execute when login button is clicked
   function loginClicked() {
     console.log("Login Clicked");
-    console.log("Email : " + emailAddress);
-    console.log("Password : " + password);
+    console.log("Email : " + userName);
+    console.log("Password : " + passWord);
+
+    fetch(BASE_URL + `/user-service/login/${userName}/${passWord}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   return (
@@ -24,8 +30,8 @@ export const Login = () => {
         </Heading>
         <Label htmlFor="email">Email</Label>
         <Input
-          value={emailAddress}
-          onChange={(e) => setEmailAddress(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           id="email"
           name="email"
           type="email"
@@ -34,8 +40,8 @@ export const Login = () => {
         <Box>
           <Label htmlFor="password">Password</Label>
           <Input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={passWord}
+            onChange={(e) => setPassWord(e.target.value)}
             id="password"
             name="password"
             type="password"
