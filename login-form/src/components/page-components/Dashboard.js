@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Heading, Button } from "rebass";
+import { Box, Heading, Button, Text } from "rebass";
 import { Label, Input } from "@rebass/forms";
 
 export const Dashboard = () => {
@@ -28,12 +28,12 @@ export const Dashboard = () => {
         <Heading fontSize={[3]} color="primary">
           Information
         </Heading>
-        <p>
+        <Text fontWeight="bold" fontFamily="serif">
           Email address : {email} <br />
           Name : {name}
           <br />
           Origin Port : {origin}
-        </p>
+        </Text>
       </Box>
     </div>
   );

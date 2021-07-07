@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Box, Heading, Button } from "rebass";
-import { Label, Input } from "@rebass/forms";
+import { Box, Heading, Button, Link } from "rebass";
+import { Label, Input, Switch } from "@rebass/forms";
+
+// import { ThemeProvider } from "@emotion/react";
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
@@ -16,7 +18,14 @@ export const Login = () => {
 
     fetch(BASE_URL + `/user-service/login/${userName}/${passWord}`)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      // .then((data) => console.log(data));
+      .then(function setValues(response) {
+        if (response.status === "success") {
+          console.log(response);
+        } else {
+          console.log(response);
+        }
+      });
   }
 
   return (
@@ -24,6 +33,7 @@ export const Login = () => {
       <Heading fontSize={[6]} color="primary">
         Ready to take a challenge?
       </Heading>
+
       <Box>
         <Heading fontSize={[3]} color="primary">
           Login to pick a challenge
@@ -37,7 +47,7 @@ export const Login = () => {
           type="email"
           placeholder="Email address"
         />
-        <Box>
+        <Box width={[1, 1, 1 / 2]}>
           <Label htmlFor="password">Password</Label>
           <Input
             value={passWord}

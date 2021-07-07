@@ -12,9 +12,12 @@ function App() {
         <Route name="login">
           <Login></Login>
         </Route>
+
         <Redirect exact from="/" to="login" />
+        {/* <Route name="dashboard">
+          <Dashboard></Dashboard>
+        </Route> */}
       </ThemeProvider>
-      {/* <Dashboard></Dashboard> */}
     </Router>
   );
 }

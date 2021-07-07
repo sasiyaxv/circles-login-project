@@ -26,10 +26,12 @@ app.get("/user-service/login/:username/:password", (req, res) => {
   ) {
     console.log("Hooray, It's working.");
     res.json({
+      status: "success",
       message: `Hello ${username}`,
     });
   } else {
     res.json({
+      status: "fail",
       message: "Oh no, Login is not working.",
     });
   }
