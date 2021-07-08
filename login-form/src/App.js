@@ -20,9 +20,6 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
 
           <Redirect exact from="/" to="login" />
-          {/* <Route name="dashboard">
-          <Dashboard></Dashboard>
-        </Route> */}
         </Switch>
       </ThemeProvider>
     </Router>

@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import { Box, Heading, Button, Link } from "rebass";
-
 import { Label, Input } from "@rebass/forms";
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
   Switch,
   useHistory,
 } from "react-router-dom";
 import { Dashboard } from "./Dashboard";
 
-// import { ThemeProvider } from "@emotion/react";
-
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
 
-  const [apiCallOk, setApiCallOk] = useState(false);
   const history = useHistory();
 
   const BASE_URL = "http://localhost:5000";
@@ -34,11 +29,6 @@ export const Login = () => {
         if (response.status === "success") {
           console.log(response);
           history.push("/dashboard");
-          // <Router>
-          //   <Switch>
-          //     <Route exact path="/dashboard" component={Dashboard}></Route>
-          //   </Switch>
-          // </Router>;
         } else {
           console.log(response);
         }
@@ -47,18 +37,21 @@ export const Login = () => {
 
   return (
     <Router>
-      <div>
-        <Heading fontSize={[6]} color="primary">
+      <Box m={[2, 3, 4]} textAlign="center">
+        <Heading fontSize={[5, 6, 7]} color="primary">
           Ready to take a challenge?
         </Heading>
 
         <Box>
-          <Heading fontSize={[3]} color="primary">
+          <Heading fontSize={[3, 4, 5]} color="primary">
             Login to pick a challenge
           </Heading>
-          <Box width={[1, 1, 1 / 2]}>
-            <Label htmlFor="email">Email</Label>
+          <Box>
+            <Label fontSize={[2, 3, 4]} htmlFor="email">
+              Email
+            </Label>
             <Input
+              fontSize={[2, 3, 4]}
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               id="email"
@@ -67,9 +60,12 @@ export const Login = () => {
               placeholder="Email address"
             />
           </Box>
-          <Box width={[1, 1, 1 / 2]}>
-            <Label htmlFor="password">Password</Label>
+          <Box>
+            <Label fontSize={[2, 3, 4]} htmlFor="password">
+              Password
+            </Label>
             <Input
+              fontSize={[2, 3, 4]}
               value={passWord}
               onChange={(e) => setPassWord(e.target.value)}
               id="password"
@@ -80,6 +76,11 @@ export const Login = () => {
           </Box>
           <Box>
             <Button
+              mt={[2, 3, 4]}
+              pt={[3]}
+              pr={[3, 4, 5]}
+              pl={[3, 4, 5]}
+              pb={[3]}
               component={Link}
               to="/dashboard"
               bg="blue"
@@ -92,7 +93,7 @@ export const Login = () => {
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
-      </div>
+      </Box>
     </Router>
   );
 };

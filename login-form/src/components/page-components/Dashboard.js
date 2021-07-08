@@ -21,22 +21,27 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      <Heading fontSize={[6]} color="primary">
+    <Box m={[2, 3, 4]} textAlign="center">
+      <Heading fontSize={[5, 6, 7]} color="primary">
         Hello! I see you got through the login
       </Heading>
 
       <Box>
-        <Heading fontSize={[3]} color="primary">
+        <Heading
+          mt={[2, 3, 4]}
+          mb={[2, 3, 4]}
+          fontSize={[3, 4, 5]}
+          color="primary"
+        >
           Information
         </Heading>
-        <Text fontWeight="bold" fontFamily="serif">
+        <Text fontSize={[2, 3, 4]} fontWeight="bold" fontFamily="serif">
           Email address : {email} <br />
           Name : {name}
           <br />
           Origin Port : {origin}
         </Text>
       </Box>
-    </div>
+    </Box>
   );
 };
