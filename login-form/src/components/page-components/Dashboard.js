@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Heading, Button, Text } from "rebass";
 import { Label, Input } from "@rebass/forms";
 
@@ -9,14 +9,16 @@ export const Dashboard = () => {
 
   const BASE_URL = "http://localhost:5000";
 
-  fetch(BASE_URL + "/user-service/user-details")
-    .then((response) => response.json())
-    .then(function setValues(response) {
-      console.log(response);
-      setEmail(response.email);
-      setName(response.name);
-      setOrigin(response.origin);
-    });
+  useEffect(() => {
+    fetch(BASE_URL + "/user-service/user-details")
+      .then((response) => response.json())
+      .then(function setValues(response) {
+        console.log(response);
+        setEmail(response.email);
+        setName(response.name);
+        setOrigin(response.origin);
+      });
+  }, []);
 
   return (
     <div>
