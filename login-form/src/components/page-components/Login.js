@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Heading, Button, Link } from "rebass";
-import { Label, Input } from "@rebass/forms";
+import { Label as Text, Input } from "@rebass/forms";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,6 +12,8 @@ import { Dashboard } from "./Dashboard";
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
+
+  const [responseMessage, setResponseMessage] = useState("");
 
   const history = useHistory();
 
@@ -31,27 +33,48 @@ export const Login = () => {
           history.push("/dashboard");
         } else {
           console.log(response);
+          setResponseMessage("Please recheck your login credentials.");
         }
       });
   }
 
   return (
     <Router>
-      <Box m={[2, 3, 4]} textAlign="center">
-        <Heading fontSize={[5, 6, 7]} color="primary">
+      <Box m={[2, 3, 4]}>
+        <Heading fontSize={[5, 6, 7]} color="primary" textAlign="center">
           Ready to take a challenge?
         </Heading>
 
-        <Box>
-          <Heading fontSize={[3, 4, 5]} color="primary">
+        <Box
+          bg="#E8E8E8"
+          mt={[2, 3, 4]}
+          p={[2, 3, 4]}
+          sx={{
+            borderWidth: "1px",
+            borderStyle: "solid",
+            borderColor: "black",
+          }}
+        >
+          <Heading fontSize={[3, 4, 5]} mb={[2, 3, 4]}>
             Login to pick a challenge
           </Heading>
           <Box>
-            <Label fontSize={[2, 3, 4]} htmlFor="email">
+            <Text mb={[2, 3, 4]} fontSize={[2, 3, 4]} htmlFor="email">
               Email
-            </Label>
+            </Text>
             <Input
+              sx={{
+                fontFamily: "monospace",
+                border: "none",
+                borderWidth: "1px",
+                borderBottom: "solid",
+                borderColor: "black",
+                ":focus": {
+                  outline: "none",
+                },
+              }}
               fontSize={[2, 3, 4]}
+              mb={[2, 3, 4]}
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               id="email"
@@ -61,10 +84,21 @@ export const Login = () => {
             />
           </Box>
           <Box>
-            <Label fontSize={[2, 3, 4]} htmlFor="password">
+            <Text mb={[2, 3, 4]} fontSize={[2, 3, 4]} htmlFor="password">
               Password
-            </Label>
+            </Text>
             <Input
+              sx={{
+                fontFamily: "monospace",
+                border: "none",
+                borderWidth: "1px",
+                borderBottom: "solid",
+                borderColor: "black",
+                ":focus": {
+                  outline: "none",
+                },
+              }}
+              mb={[2, 3, 4]}
               fontSize={[2, 3, 4]}
               value={passWord}
               onChange={(e) => setPassWord(e.target.value)}
@@ -77,17 +111,24 @@ export const Login = () => {
           <Box>
             <Button
               mt={[2, 3, 4]}
+              mb={[2, 3, 4]}
               pt={[3]}
               pr={[3, 4, 5]}
               pl={[3, 4, 5]}
               pb={[3]}
               component={Link}
               to="/dashboard"
-              bg="blue"
+              bg="#495464"
               onClick={loginClicked}
             >
               Login
             </Button>
+            <br />
+
+            <Box color="red">
+              {/* In case of wrong credentials */}
+              {responseMessage}
+            </Box>
           </Box>
         </Box>
         <Switch>

@@ -19,8 +19,7 @@ test("Check if initial values and components are loaded", () => {
   expect(loginButton).toBeInTheDocument();
   expect(loginButton).toBeEnabled();
 
-  //   fireEvent.click(loginButton);
-  //   expect
+  expect(loginButton).toHaveStyle({ backgroundColor: "#495464" });
 });
 
 test("Check functionality of page", () => {

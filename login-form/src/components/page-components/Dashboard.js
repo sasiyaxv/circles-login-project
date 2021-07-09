@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Heading, Button, Text } from "rebass";
-import { Label, Input } from "@rebass/forms";
+import { Box, Heading, Text } from "rebass";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
@@ -21,12 +20,18 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <Box m={[2, 3, 4]} textAlign="center">
-      <Heading fontSize={[5, 6, 7]} color="primary">
+    <Box m={[2, 3, 4]}>
+      <Heading fontSize={[5, 6, 7]} color="primary" textAlign="center">
         Hello! I see you got through the login
       </Heading>
 
-      <Box>
+      <Box
+        bg="#E8E8E8"
+        mt={[2, 3, 4]}
+        mb={[2, 3, 4]}
+        p={[2, 3, 4]}
+        sx={{ borderWidth: "1px", borderStyle: "solid", borderColor: "black" }}
+      >
         <Heading
           mt={[2, 3, 4]}
           mb={[2, 3, 4]}
