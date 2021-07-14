@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Box, Heading, Button, Link } from "rebass";
 import { Label as Text, Input } from "@rebass/forms";
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
   useHistory,
 } from "react-router-dom";
 import { Dashboard } from "./Dashboard";
@@ -39,7 +36,7 @@ export const Login = () => {
   }
 
   return (
-    <Router>
+   
       <Box m={[2, 3, 4]}>
         <Heading fontSize={[5, 6, 7]} color="primary" textAlign="center">
           Ready to take a challenge?
@@ -131,10 +128,8 @@ export const Login = () => {
             </Box>
           </Box>
         </Box>
-        <Switch>
-          <Route exact path="/dashboard" component={Dashboard} />
-        </Switch>
+      
       </Box>
-    </Router>
+ 
   );
 };
