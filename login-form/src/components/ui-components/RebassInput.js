@@ -1,5 +1,6 @@
 import React from "react";
+import { Input } from "@rebass/forms";
 
-export const RebassInput = () => {
-  return <div></div>;
+export const RebassInput = ({ name, fontFamily, border }) => {
+  return <Input></Input>;
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text } from "rebass";
+import { Box } from "rebass";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
@@ -43,13 +43,6 @@ export const Dashboard = () => {
           marginBottom={[2, 3, 4]}
           marginTop={[2, 3, 4]}
         />
-
-        {/* <Text fontSize={[2, 3, 4]} fontWeight="bold" fontFamily="serif">
-          Email address : {email} <br />
-          Name : {name}
-          <br />
-          Origin Port : {origin}
-        </Text> */}
 
         <RebassLabel
           fontSize={[2, 3, 4]}
