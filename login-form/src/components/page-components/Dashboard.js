@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Box, Heading, Text } from "rebass";
+import { Box, Text } from "rebass";
+
+import { RebassHeading } from "../ui-components/RebassHeading";
+import { RebassLabel } from "../ui-components/RebassLabel";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
@@ -21,9 +24,11 @@ export const Dashboard = () => {
 
   return (
     <Box m={[2, 3, 4]}>
-      <Heading fontSize={[5, 6, 7]} color="primary" textAlign="center">
-        Hello! I see you got through the login
-      </Heading>
+      <RebassHeading
+        name={" Hello! I see you got through the login"}
+        fontSize={[5, 6, 7]}
+        textAlign={"center"}
+      />
 
       <Box
         bg="#E8E8E8"
@@ -32,20 +37,30 @@ export const Dashboard = () => {
         p={[2, 3, 4]}
         sx={{ borderWidth: "1px", borderStyle: "solid", borderColor: "black" }}
       >
-        <Heading
-          mt={[2, 3, 4]}
-          mb={[2, 3, 4]}
+        <RebassHeading
+          name={"Information"}
           fontSize={[3, 4, 5]}
-          color="primary"
-        >
-          Information
-        </Heading>
-        <Text fontSize={[2, 3, 4]} fontWeight="bold" fontFamily="serif">
+          marginBottom={[2, 3, 4]}
+          marginTop={[2, 3, 4]}
+        />
+
+        {/* <Text fontSize={[2, 3, 4]} fontWeight="bold" fontFamily="serif">
           Email address : {email} <br />
           Name : {name}
           <br />
           Origin Port : {origin}
-        </Text>
+        </Text> */}
+
+        <RebassLabel
+          fontSize={[2, 3, 4]}
+          fontWeight="bold"
+          fontFamily="serif"
+          name={`
+          Email address : ${email} 
+          Name : ${name}
+          
+         Origin Port : ${origin}`}
+        />
       </Box>
     </Box>
   );

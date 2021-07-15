@@ -1,5 +1,5 @@
 import React from "react";
 
-export const RebassButton = () => {
+export const RebassInput = () => {
   return <div></div>;
 };
