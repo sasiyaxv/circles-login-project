@@ -3,16 +3,15 @@ import { Box } from "rebass";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
+import { ConstClass } from "../../ConstClass";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [origin, setOrigin] = useState();
 
-  const BASE_URL = "http://localhost:5000";
-
   useEffect(() => {
-    fetch(BASE_URL + "/user-service/user-details")
+    fetch(ConstClass.BASE_URL + "/user-service/user-details")
       .then((response) => response.json())
       .then(function setValues(response) {
         console.log(response);

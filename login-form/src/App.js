@@ -1,9 +1,11 @@
 import "./App.css";
+import React, { useContext } from "react";
 import { ThemeProvider } from "@emotion/react";
 import theme from "@rebass/preset";
 import { Routes } from "./Routes";
 
 function App() {
+  // const MyContext = useContext(TestContext);
   return (
     <ThemeProvider theme={theme}>
       {/* separation of concerns

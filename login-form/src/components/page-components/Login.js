@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
+import { ConstClass } from "../../ConstClass";
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
@@ -14,15 +15,13 @@ export const Login = () => {
 
   const history = useHistory();
 
-  const BASE_URL = "http://localhost:5000";
-
   // Function to execute when login button is clicked
   function loginClicked() {
     console.log("Login Clicked");
     console.log("Email : " + userName);
     console.log("Password : " + passWord);
 
-    fetch(BASE_URL + `/user-service/login/${userName}/${passWord}`)
+    fetch(ConstClass.BASE_URL + `/user-service/login/${userName}/${passWord}`)
       .then((response) => response.json())
       .then(function setValues(response) {
         if (response.status === "success") {
