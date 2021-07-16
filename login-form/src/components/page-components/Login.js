@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Box, Button, Link } from "rebass";
 import { Input } from "@rebass/forms";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { ConstClass } from "../../ConstClass";
+import { login } from "../../Features/UserSlice";
+import { useDispatch } from "react-redux";
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
@@ -13,7 +15,20 @@ export const Login = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
+  const dispatch = useDispatch();
+
   const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      login({
+        name: userName,
+        passWord: passWord,
+        loggedIn: true,
+      })
+    );
+  };
 
   // Function to execute when login button is clicked
   function loginClicked() {
@@ -130,6 +145,20 @@ export const Login = () => {
           </Button>
 
           <br />
+
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <input
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="UserName"
+            ></input>
+            <input
+              value={passWord}
+              onChange={(e) => setPassWord(e.target.value)}
+              placeholder="Password"
+            ></input>
+            <button type="submit">submit</button>
+          </form>
 
           <Box color="red">
             {/* In case of wrong credentials */}
