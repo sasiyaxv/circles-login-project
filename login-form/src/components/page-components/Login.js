@@ -6,7 +6,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { ConstClass } from "../../ConstClass";
-import { login } from "../../Features/UserSlice";
+import { login } from "../../store/reducers/UserSlice";
 import { useDispatch } from "react-redux";
 
 export const Login = () => {
