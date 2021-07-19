@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import App from "../App";
+import { Provider } from "react-redux";
+import Store from "../../src/store/storeConfiguration/Store";
 
 // test("renders learn react link", () => {
 //   render(<App />);
@@ -8,5 +10,9 @@ import App from "../App";
 // });
 
 test("Check if initial values and components are loaded", () => {
-  render(<App />);
+  render(
+    <Provider store={Store}>
+      <App />
+    </Provider>
+  );
 });

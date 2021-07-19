@@ -1,8 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Login } from "../components/page-components/Login";
 import { LoginWrapper } from "../components/page-components/LoginWrapper";
-
-import axios from "axios";
 
 test("Check if initial values and components are loaded", () => {
   render(<LoginWrapper />);
