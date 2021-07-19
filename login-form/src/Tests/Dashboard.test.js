@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Dashboard } from "./components/page-components/Dashboard";
+import { Dashboard } from "../components/page-components/Dashboard";
 
 test("Check if initial values and components are loaded", () => {
   render(<Dashboard />);

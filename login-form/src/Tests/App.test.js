@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "./App";
-import Login from "./components/page-components/Login";
+import App from "../App";
 
 // test("renders learn react link", () => {
 //   render(<App />);
@@ -10,6 +9,4 @@ import Login from "./components/page-components/Login";
 
 test("Check if initial values and components are loaded", () => {
   render(<App />);
-
-  // render(<Login />);
 });

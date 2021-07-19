@@ -15,10 +15,13 @@ export const Login = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
+  // Redux
   const dispatch = useDispatch();
 
+  // To update path in url
   const history = useHistory();
 
+  // Dispatching the action
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -44,7 +47,7 @@ export const Login = () => {
           history.push("/dashboard");
         } else {
           console.log(response);
-          setResponseMessage("Please recheck your login credentials.");
+          setResponseMessage(ConstClass.errorMessage);
         }
       });
   }
@@ -72,81 +75,83 @@ export const Login = () => {
           marginBottom={[2, 3, 4]}
           name={"Login to pick a challenge"}
         />
-        <Box>
-          <RebassLabel
-            fontSize={[2, 3, 4]}
-            marginBottom={[2, 3, 4]}
-            name={"Email"}
-            htmlFor="email"
-          />
-          <Input
-            sx={{
-              fontFamily: "monospace",
-              border: "none",
-              borderWidth: "1px",
-              borderBottom: "solid",
-              borderColor: "black",
-              ":focus": {
-                outline: "none",
-              },
-            }}
-            fontSize={[2, 3, 4]}
-            mb={[2, 3, 4]}
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email address"
-          />
-        </Box>
-        <Box>
-          <RebassLabel
-            fontSize={[2, 3, 4]}
-            marginBottom={[2, 3, 4]}
-            name={"Password"}
-            htmlFor="password"
-          />
-          <Input
-            sx={{
-              fontFamily: "monospace",
-              border: "none",
-              borderWidth: "1px",
-              borderBottom: "solid",
-              borderColor: "black",
-              ":focus": {
-                outline: "none",
-              },
-            }}
-            mb={[2, 3, 4]}
-            fontSize={[2, 3, 4]}
-            value={passWord}
-            onChange={(e) => setPassWord(e.target.value)}
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-          />
-        </Box>
-        <Box>
-          <Button
-            mt={[2, 3, 4]}
-            mb={[2, 3, 4]}
-            pt={[3]}
-            pr={[3, 4, 5]}
-            pl={[3, 4, 5]}
-            pb={[3]}
-            component={Link}
-            to="/dashboard"
-            bg="#495464"
-            onClick={loginClicked}
-          >
-            Login
-          </Button>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <Box>
+            <RebassLabel
+              fontSize={[2, 3, 4]}
+              marginBottom={[2, 3, 4]}
+              name={"Email"}
+              htmlFor="email"
+            />
+            <Input
+              sx={{
+                fontFamily: "monospace",
+                border: "none",
+                borderWidth: "1px",
+                borderBottom: "solid",
+                borderColor: "black",
+                ":focus": {
+                  outline: "none",
+                },
+              }}
+              fontSize={[2, 3, 4]}
+              mb={[2, 3, 4]}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email address"
+            />
+          </Box>
+          <Box>
+            <RebassLabel
+              fontSize={[2, 3, 4]}
+              marginBottom={[2, 3, 4]}
+              name={"Password"}
+              htmlFor="password"
+            />
+            <Input
+              sx={{
+                fontFamily: "monospace",
+                border: "none",
+                borderWidth: "1px",
+                borderBottom: "solid",
+                borderColor: "black",
+                ":focus": {
+                  outline: "none",
+                },
+              }}
+              mb={[2, 3, 4]}
+              fontSize={[2, 3, 4]}
+              value={passWord}
+              onChange={(e) => setPassWord(e.target.value)}
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </Box>
+          <Box>
+            <Button
+              mt={[2, 3, 4]}
+              mb={[2, 3, 4]}
+              pt={[3]}
+              pr={[3, 4, 5]}
+              pl={[3, 4, 5]}
+              pb={[3]}
+              type="submit"
+              component={Link}
+              to="/dashboard"
+              bg="#495464"
+              onClick={loginClicked}
+            >
+              Login
+            </Button>
 
-          <br />
+            <br />
 
-          <form onSubmit={(e) => handleSubmit(e)}>
+            {/* <form onSubmit={(e) => handleSubmit(e)}>
             <input
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
@@ -158,13 +163,14 @@ export const Login = () => {
               placeholder="Password"
             ></input>
             <button type="submit">submit</button>
-          </form>
+          </form> */}
 
-          <Box color="red">
-            {/* In case of wrong credentials */}
-            {responseMessage}
+            <Box color="red">
+              {/* In case of wrong credentials */}
+              {responseMessage}
+            </Box>
           </Box>
-        </Box>
+        </form>
       </Box>
     </Box>
   );

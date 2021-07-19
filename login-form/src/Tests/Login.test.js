@@ -1,9 +1,11 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Login } from "./components/page-components/Login";
+import { Login } from "../components/page-components/Login";
+import { LoginWrapper } from "../components/page-components/LoginWrapper";
+
 import axios from "axios";
 
 test("Check if initial values and components are loaded", () => {
-  render(<Login />);
+  render(<LoginWrapper />);
 
   const mainHeader = screen.getByRole("heading", {
     name: "Ready to take a challenge?",
@@ -23,7 +25,7 @@ test("Check if initial values and components are loaded", () => {
 });
 
 test("Check functionality of page", () => {
-  render(<Login />);
+  render(<LoginWrapper />);
   const loginButton = screen.getByRole("button", { name: "Login" });
   fireEvent.click(loginButton);
 });
