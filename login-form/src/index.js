@@ -5,11 +5,29 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import Store from "./store/storeConfiguration/Store";
+import store from "./app/store";
+
+// const countReducer = function (state = 0, action) {
+//   switch (action.type) {
+//     case "INCREMENT":
+//       return state + 1;
+//     case "DECREMENT":
+//       return state - 1;
+//     default:
+//       return state;
+//   }
+// };
+
+// let store = createStore(countReducer);
+
+// const Component = () => <h1>Hello</h1>;
+
+// const Container = connect()(Component);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={Store}>
+    <Provider store={store}>
+      {/* <Container></Container> */}
       <App />
     </Provider>
   </React.StrictMode>,

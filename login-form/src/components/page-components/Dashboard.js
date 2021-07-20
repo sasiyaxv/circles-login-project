@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "rebass";
 
-import { RebassHeading } from "../ui-components/RebassHeading";
-import { RebassLabel } from "../ui-components/RebassLabel";
-import { ConstClass } from "../../ConstClass";
+import { RebassHeading } from "../ui-components/rebassHeading";
+import { RebassLabel } from "../ui-components/rebassLabel";
+import { constClass } from "../../constClass";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
@@ -11,7 +11,7 @@ export const Dashboard = () => {
   const [origin, setOrigin] = useState();
 
   useEffect(() => {
-    fetch(ConstClass.BASE_URL + "/user-service/user-details")
+    fetch(constClass.BASE_URL + "/user-service/user-details")
       .then((response) => response.json())
       .then(function setValues(response) {
         console.log(response);

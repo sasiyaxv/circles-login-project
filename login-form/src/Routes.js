@@ -5,8 +5,8 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Login } from "./components/page-components/Login";
-import { Dashboard } from "./components/page-components/Dashboard";
+import { Login } from "./components/page-components/login";
+import { Dashboard } from "./components/page-components/dashboard";
 import { ConstClass } from "./ConstClass";
 
 export const Routes = () => {

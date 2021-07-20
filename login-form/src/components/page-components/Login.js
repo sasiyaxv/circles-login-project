@@ -3,10 +3,10 @@ import { Box, Button, Link } from "rebass";
 import { Input } from "@rebass/forms";
 import { useHistory, useParams } from "react-router-dom";
 
-import { RebassHeading } from "../ui-components/RebassHeading";
-import { RebassLabel } from "../ui-components/RebassLabel";
-import { ConstClass } from "../../ConstClass";
-import { login } from "../../store/reducers/UserSlice";
+import { RebassHeading } from "../ui-components/rebassHeading";
+import { RebassLabel } from "../ui-components/rebassLabel";
+import { constClass } from "../../constClass";
+import { login } from "../../features/counter/userSlice";
 import { useDispatch } from "react-redux";
 
 export const Login = () => {
@@ -39,7 +39,7 @@ export const Login = () => {
     console.log("Email : " + userName);
     console.log("Password : " + passWord);
 
-    fetch(ConstClass.BASE_URL + `/user-service/login/${userName}/${passWord}`)
+    fetch(constClass.BASE_URL + `/user-service/login/${userName}/${passWord}`)
       .then((response) => response.json())
       .then(function setValues(response) {
         if (response.status === "success") {
@@ -47,7 +47,7 @@ export const Login = () => {
           history.push("/dashboard");
         } else {
           console.log(response);
-          setResponseMessage(ConstClass.errorMessage);
+          setResponseMessage(constClass.errorMessage);
         }
       });
   }

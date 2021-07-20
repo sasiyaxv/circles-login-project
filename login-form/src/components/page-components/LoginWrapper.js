@@ -1,6 +1,6 @@
 import React from "react";
-import { Login } from "./Login";
-import Store from "../../store/storeConfiguration/Store";
+import { Login } from "./login";
+import Store from "../../app/store";
 import { Provider } from "react-redux";
 
 export const LoginWrapper = () => {

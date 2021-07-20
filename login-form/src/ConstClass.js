@@ -1,4 +1,4 @@
-export const ConstClass = {
+export const constClass = {
   BASE_URL: "http://localhost:5000",
   routeToLogin: "/login",
   routeToDashboard: "./dashboard",
