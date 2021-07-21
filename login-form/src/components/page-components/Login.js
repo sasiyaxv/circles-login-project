@@ -3,10 +3,10 @@ import { Box, Button, Link } from "rebass";
 import { Input } from "@rebass/forms";
 import { useHistory, useParams } from "react-router-dom";
 
-import { RebassHeading } from "../ui-components/rebassHeading";
-import { RebassLabel } from "../ui-components/rebassLabel";
-import { constClass } from "../../constClass";
-import { login } from "../../features/counter/userSlice";
+import { RebassHeading } from "../ui-components/RebassHeading";
+import { RebassLabel } from "../ui-components/RebassLabel";
+import { constClass } from "../../ConstClass";
+import { login } from "../../features/counter/UserSlice";
 import { useDispatch } from "react-redux";
 
 export const Login = () => {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "rebass";
 
-import { RebassHeading } from "../ui-components/rebassHeading";
-import { RebassLabel } from "../ui-components/rebassLabel";
-import { constClass } from "../../constClass";
+import { RebassHeading } from "../ui-components/RebassHeading";
+import { RebassLabel } from "../ui-components/RebassLabel";
+import { constClass } from "../../ConstClass";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
