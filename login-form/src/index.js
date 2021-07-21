@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import store from "./app/store";
+import store from "./app/Store";
 
 // const countReducer = function (state = 0, action) {
 //   switch (action.type) {
