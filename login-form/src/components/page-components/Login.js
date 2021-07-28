@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { Box, Button, Link } from "rebass";
 import { Input } from "@rebass/forms";
 import { useHistory, useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
 
+import { incrementBy,login } from "../../redux/actions";
 
 
-export const Login = () => {
+
+ const Login = (props) => {
+   console.log("Props",props);
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
 
@@ -20,6 +24,9 @@ export const Login = () => {
 
   // Function to execute when login button is clicked
   function loginClicked(e) {
+
+    props.incrementBy10();
+
     e.preventDefault();
     console.log("Login Clicked");
     console.log("Email : " + userName);
@@ -30,6 +37,7 @@ export const Login = () => {
       .then(function setValues(response) {
         if (response.status === "success") {
           console.log(response);
+          
           history.push("/dashboard");
         } else {
           console.log(response);
@@ -141,8 +149,31 @@ export const Login = () => {
               {responseMessage}
             </Box>
           </Box>
+          <div>
+            {props.grandTotal}
+          </div>
         </form>
       </Box>
     </Box>
   );
 };
+
+function mapStateToProps(state) {
+  console.log("state",state);
+  return {
+    grandTotal:state.example.total
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    incrementBy10 : ()=>{
+      dispatch(incrementBy(10))
+        console.log("Test");
+      }
+  }  
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
+

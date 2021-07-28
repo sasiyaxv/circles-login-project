@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Login } from "./components/page-components/Login";
+import  Login  from "./components/page-components/Login";
 import { Dashboard } from "./components/page-components/Dashboard";
 import { constClass } from "./ConstClass";
 
