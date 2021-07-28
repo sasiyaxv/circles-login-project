@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import store from "./app/store";
 
 // const countReducer = function (state = 0, action) {
 //   switch (action.type) {
@@ -26,10 +25,10 @@ import store from "./app/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+
       {/* <Container></Container> */}
       <App />
-    </Provider>
+   
   </React.StrictMode>,
   document.getElementById("root")
 );

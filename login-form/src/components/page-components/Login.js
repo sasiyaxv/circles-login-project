@@ -6,8 +6,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
-import { login } from "../../features/counter/userSlice";
-import { useDispatch } from "react-redux";
+
+
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
@@ -15,8 +15,7 @@ export const Login = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
-  // Redux
-  const dispatch = useDispatch();
+
 
   // To update path in url
   const history = useHistory();
@@ -24,13 +23,7 @@ export const Login = () => {
   // Dispatching the action
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      login({
-        name: userName,
-        passWord: passWord,
-        loggedIn: true,
-      })
-    );
+ 
   };
 
   // Function to execute when login button is clicked
