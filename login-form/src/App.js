@@ -6,7 +6,7 @@ import { Routes } from "./Routes";
 
 
 function App() {
-  // const MyContext = useContext(TestContext);
+
   return (
     <ThemeProvider theme={theme}>
       {/* separation of concerns

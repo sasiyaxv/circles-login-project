@@ -136,9 +136,6 @@ export const Login = () => {
             </Button>
 
             <br />
-
-    
-
             <Box color="red">
               {/* In case of wrong credentials */}
               {responseMessage}
