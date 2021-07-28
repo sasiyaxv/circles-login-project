@@ -15,19 +15,12 @@ export const Login = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
-
-
   // To update path in url
   const history = useHistory();
 
-  // Dispatching the action
-  const handleSubmit = (e) => {
-    e.preventDefault();
- 
-  };
-
   // Function to execute when login button is clicked
-  function loginClicked() {
+  function loginClicked(e) {
+    e.preventDefault();
     console.log("Login Clicked");
     console.log("Email : " + userName);
     console.log("Password : " + passWord);
@@ -68,7 +61,7 @@ export const Login = () => {
           marginBottom={[2, 3, 4]}
           name={"Login to pick a challenge"}
         />
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form>
           <Box>
             <RebassLabel
               fontSize={[2, 3, 4]}
@@ -137,26 +130,14 @@ export const Login = () => {
               component={Link}
               to="/dashboard"
               bg="#495464"
-              onClick={loginClicked}
+              onClick={(e) => loginClicked(e)}
             >
               Login
             </Button>
 
             <br />
 
-            {/* <form onSubmit={(e) => handleSubmit(e)}>
-            <input
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="UserName"
-            ></input>
-            <input
-              value={passWord}
-              onChange={(e) => setPassWord(e.target.value)}
-              placeholder="Password"
-            ></input>
-            <button type="submit">submit</button>
-          </form> */}
+    
 
             <Box color="red">
               {/* In case of wrong credentials */}
