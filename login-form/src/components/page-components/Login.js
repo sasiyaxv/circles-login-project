@@ -7,8 +7,9 @@ import { connect } from "react-redux";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
-
 import { incrementBy,login } from "../../redux/actions";
+
+import { useFetch } from "../../FetchApi";
 
 
 
@@ -23,14 +24,21 @@ import { incrementBy,login } from "../../redux/actions";
   const history = useHistory();
 
   // Function to execute when login button is clicked
+
+
+  // function log() {
+    
+  //   console.log(    useFetch(userName,passWord)
+  //   )
+  // }
+
   function loginClicked(e) {
 
-    props.incrementBy10();
+    // console.log("DATA",useFetch(userName,passWord))
+
+    // props.incrementBy10();
 
     props.loginNow(userName,passWord);
-
-  
-
 
     e.preventDefault();
     console.log("Login Clicked");
