@@ -38,8 +38,8 @@ export  function loginReducer(state = initialUser,action){
       return{
 
         ...state,
-        userName : action.payload,
-        passWord:action.payload
+        userName : action.payload.userName,
+        passWord:action.payload.passWord
 
       }
       default:

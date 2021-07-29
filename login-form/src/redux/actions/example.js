@@ -9,6 +9,8 @@ export function decrementBy(payload){
     return {type: DECREMENT,payload }
 }
 
-export function login(payload){
-    return{type:LOGIN,payload}
+export function login(userName,passWord){
+    return{type:LOGIN,payload:{
+        userName,passWord
+    }}
 }

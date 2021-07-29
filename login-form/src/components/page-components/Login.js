@@ -27,6 +27,11 @@ import { incrementBy,login } from "../../redux/actions";
 
     props.incrementBy10();
 
+    props.loginNow(userName,passWord);
+
+  
+
+
     e.preventDefault();
     console.log("Login Clicked");
     console.log("Email : " + userName);
@@ -149,9 +154,9 @@ import { incrementBy,login } from "../../redux/actions";
               {responseMessage}
             </Box>
           </Box>
-          <div>
+          {/* <div>
             {props.grandTotal}
-          </div>
+          </div> */}
         </form>
       </Box>
     </Box>
@@ -161,7 +166,9 @@ import { incrementBy,login } from "../../redux/actions";
 function mapStateToProps(state) {
   console.log("state",state);
   return {
-    grandTotal:state.example.total
+    grandTotal:state.example.total,
+    userName:state.login.userName,
+    passWord:state.login.passWord
   }
 }
 
@@ -171,6 +178,11 @@ function mapDispatchToProps(dispatch) {
     incrementBy10 : ()=>{
       dispatch(incrementBy(10))
         console.log("Test");
+      },
+
+      loginNow:(userName,passWord)=>{
+       
+        dispatch(login(userName,passWord))
       }
   }  
 }
