@@ -7,14 +7,12 @@ import { connect } from "react-redux";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
-import { incrementBy,login } from "../../redux/actions";
+import { incrementBy, login } from "../../redux/actions";
 
-import { useFetch } from "../../FetchApi";
+import { doFetch } from "../../FetchApi";
 
-
-
- const Login = (props) => {
-   console.log("Props",props);
+const Login = (props) => {
+  console.log("Props", props);
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
 
@@ -23,40 +21,23 @@ import { useFetch } from "../../FetchApi";
   // To update path in url
   const history = useHistory();
 
-  // Function to execute when login button is clicked
-
-
-  // function log() {
-    
-  //   console.log(    useFetch(userName,passWord)
-  //   )
-  // }
-
-  function loginClicked(e) {
-
-    // console.log("DATA",useFetch(userName,passWord))
-
+  async function loginClicked(e) {
     // props.incrementBy10();
 
-    props.loginNow(userName,passWord);
+    props.loginNow(userName, passWord);
 
     e.preventDefault();
     console.log("Login Clicked");
     console.log("Email : " + userName);
     console.log("Password : " + passWord);
 
-    fetch(constClass.BASE_URL + `/user-service/login/${userName}/${passWord}`)
-      .then((response) => response.json())
-      .then(function setValues(response) {
-        if (response.status === "success") {
-          console.log(response);
-          
-          history.push("/dashboard");
-        } else {
-          console.log(response);
-          setResponseMessage(constClass.errorMessage);
-        }
-      });
+    const test = await doFetch(userName, passWord);
+
+    if (test === "success") {
+      history.push("/dashboard");
+    } else {
+      setResponseMessage(constClass.errorMessage);
+    }
   }
 
   return (
@@ -172,28 +153,25 @@ import { useFetch } from "../../FetchApi";
 };
 
 function mapStateToProps(state) {
-  console.log("state",state);
+  console.log("state", state);
   return {
-    grandTotal:state.example.total,
-    userName:state.login.userName,
-    passWord:state.login.passWord
-  }
+    grandTotal: state.example.total,
+    userName: state.login.userName,
+    passWord: state.login.passWord,
+  };
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
-    incrementBy10 : ()=>{
-      dispatch(incrementBy(10))
-        console.log("Test");
-      },
+    incrementBy10: () => {
+      dispatch(incrementBy(10));
+      console.log("Test");
+    },
 
-      loginNow:(userName,passWord)=>{
-       
-        dispatch(login(userName,passWord))
-      }
-  }  
+    loginNow: (userName, passWord) => {
+      dispatch(login(userName, passWord));
+    },
+  };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login)
-
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
