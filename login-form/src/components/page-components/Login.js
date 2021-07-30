@@ -152,16 +152,16 @@ const Login = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   console.log("state", state);
   return {
     grandTotal: state.example.total,
     userName: state.login.userName,
     passWord: state.login.passWord,
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     incrementBy10: () => {
       dispatch(incrementBy(10));
@@ -172,6 +172,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(login(userName, passWord));
     },
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

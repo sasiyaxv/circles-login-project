@@ -5,6 +5,7 @@ import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 
 import { constClass } from "../../ConstClass";
+import { doFetchUserData } from "../../FetchApi";
 
 export const Dashboard = () => {
   const [email, setEmail] = useState();
@@ -15,7 +16,6 @@ export const Dashboard = () => {
     fetch(constClass.BASE_URL + "/user-service/user-details")
       .then((response) => response.json())
       .then(function setValues(response) {
-        console.log(response);
         setEmail(response.email);
         setName(response.name);
         setOrigin(response.origin);
