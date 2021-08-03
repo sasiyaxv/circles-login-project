@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
-import { incrementBy, login } from "../../redux/actions";
+import { incrementBy, login, sagaLogin } from "../../redux/actions";
 
 import { doFetch } from "../../FetchApi";
 
@@ -25,6 +25,8 @@ const Login = (props) => {
     // props.incrementBy10();
 
     props.loginNow(userName, passWord);
+
+    props.sagaLogin(userName, passWord);
 
     e.preventDefault();
     console.log("Login Clicked");
@@ -170,6 +172,9 @@ const mapDispatchToProps = (dispatch) => {
 
     loginNow: (userName, passWord) => {
       dispatch(login(userName, passWord));
+    },
+    loginSaga: (userName, passWord) => {
+      dispatch(sagaLogin(userName, passWord));
     },
   };
 };
