@@ -1,10 +1,6 @@
 import { call, put, takeLatest } from "@redux-saga/core/effects";
-import { doFetch } from "../FetchApi";
+import { doFetch, doFetchUserData } from "../FetchApi";
 import { sagaLogin } from "./actions";
-
-export function* helloSaga() {
-  console.log("Hello Sagas!");
-}
 
 export function* userLogin({ payload }) {
   try {
@@ -14,8 +10,13 @@ export function* userLogin({ payload }) {
     yield put({ type: sagaLogin, message: e.message });
   }
 }
-
-export function* getUserData() {}
+// export function* getUserData() {
+//   try {
+//     const newUser = yield call(doFetchUserData);
+//   } catch (e) {
+//     yield put({ type: "USER_DATA", message: e.message });
+//   }
+// }
 
 export function* mySaga() {
   yield takeLatest("SAGALOGIN", userLogin);

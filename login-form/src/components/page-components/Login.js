@@ -20,7 +20,6 @@ const Login = (props) => {
 
   useEffect(() => {
     if (loginResponse === undefined) return;
-    console.log("USEEFFECT", loginResponse);
     if (loginResponse === "success") {
       history.push("/dashboard");
     } else {
@@ -36,7 +35,7 @@ const Login = (props) => {
 
     e.preventDefault();
 
-    const user = loginSaga(userName, passWord, (response) => {});
+    const user = loginSaga(userName, passWord);
 
     console.log("USER", user);
     console.log("Login Clicked");

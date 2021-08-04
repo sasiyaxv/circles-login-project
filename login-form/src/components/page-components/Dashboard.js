@@ -13,14 +13,17 @@ export const Dashboard = () => {
   const [origin, setOrigin] = useState();
 
   useEffect(() => {
-    fetch(constClass.BASE_URL + "/user-service/user-details")
-      .then((response) => response.json())
-      .then(function setValues(response) {
-        setEmail(response.email);
-        setName(response.name);
-        setOrigin(response.origin);
-      });
-  }, []);
+    // fetch(constClass.BASE_URL + "/user-service/user-details")
+    //   .then((response) => response.json())
+    //   .then(function setValues(response) {
+    //     setEmail(response.email);
+    //     setName(response.name);
+    //     setOrigin(response.origin);
+    //   });
+  }, [RebassLabel]);
+
+  // async const newUser =await doFetchUserData();
+  // console.log("AFTER", newUser);
 
   return (
     <Box m={[2, 3, 4]}>
@@ -51,7 +54,6 @@ export const Dashboard = () => {
           name={`
           Email address : ${email} 
           Name : ${name}
-          
          Origin Port : ${origin}`}
         />
       </Box>
