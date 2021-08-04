@@ -55,6 +55,11 @@ export function sagaLoginReducer(state = sagaUser, action) {
         userName: action.payload.userName,
         passWord: action.payload.passWord,
       };
+    case "LOGIN_RESPONSE":
+      return {
+        ...state,
+        loginResponse: action.payload,
+      };
     default:
       return state;
   }

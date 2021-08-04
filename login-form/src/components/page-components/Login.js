@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Link } from "rebass";
 import { Input } from "@rebass/forms";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
@@ -9,14 +9,24 @@ import { RebassLabel } from "../ui-components/RebassLabel";
 import { constClass } from "../../ConstClass";
 import { incrementBy, login, sagaLogin } from "../../redux/actions";
 
-import { doFetch } from "../../FetchApi";
-
 const Login = (props) => {
   console.log("Props", props);
+  const { loginResponse, loginSaga } = props;
+
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
 
   const [responseMessage, setResponseMessage] = useState("");
+
+  useEffect(() => {
+    if (loginResponse === undefined) return;
+    console.log("USEEFFECT", loginResponse);
+    if (loginResponse === "success") {
+      history.push("/dashboard");
+    } else {
+      setResponseMessage(constClass.errorMessage);
+    }
+  }, [loginResponse]);
 
   // To update path in url
   const history = useHistory();
@@ -24,22 +34,14 @@ const Login = (props) => {
   async function loginClicked(e) {
     // props.incrementBy10();
 
-    props.loginNow(userName, passWord);
-
-    props.sagaLogin(userName, passWord);
-
     e.preventDefault();
+
+    const user = loginSaga(userName, passWord, (response) => {});
+
+    console.log("USER", user);
     console.log("Login Clicked");
     console.log("Email : " + userName);
     console.log("Password : " + passWord);
-
-    const test = await doFetch(userName, passWord);
-
-    if (test === "success") {
-      history.push("/dashboard");
-    } else {
-      setResponseMessage(constClass.errorMessage);
-    }
   }
 
   return (
@@ -160,6 +162,7 @@ const mapStateToProps = (state) => {
     grandTotal: state.example.total,
     userName: state.login.userName,
     passWord: state.login.passWord,
+    loginResponse: state.sagaExample?.loginResponse?.status,
   };
 };
 
@@ -173,8 +176,8 @@ const mapDispatchToProps = (dispatch) => {
     loginNow: (userName, passWord) => {
       dispatch(login(userName, passWord));
     },
-    loginSaga: (userName, passWord) => {
-      dispatch(sagaLogin(userName, passWord));
+    loginSaga: (userName, passWord, callbackFn) => {
+      dispatch(sagaLogin(userName, passWord, callbackFn));
     },
   };
 };

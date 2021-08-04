@@ -7,7 +7,7 @@ export const doFetch = (userName, passWord) => {
     .get(constClass.BASE_URL + `/user-service/login/${userName}/${passWord}`)
     .then(function (response) {
       console.log(response);
-      return response.data.status;
+      return response.data;
     })
     .catch((err) => {
       console.log(err);
