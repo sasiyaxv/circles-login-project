@@ -3,11 +3,11 @@ import { Box } from "rebass";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
-
+import { getDashboardData } from "../../redux/actions";
 import { constClass } from "../../ConstClass";
 import { doFetchUserData } from "../../FetchApi";
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [origin, setOrigin] = useState();
@@ -20,7 +20,7 @@ export const Dashboard = () => {
     //     setName(response.name);
     //     setOrigin(response.origin);
     //   });
-  }, [RebassLabel]);
+  }, []);
 
   // async const newUser =await doFetchUserData();
   // console.log("AFTER", newUser);
@@ -59,4 +59,13 @@ export const Dashboard = () => {
       </Box>
     </Box>
   );
+};
+
+const mapStateToProps = (state) => {
+  console.log("state", state);
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
 };

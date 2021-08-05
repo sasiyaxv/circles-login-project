@@ -1,4 +1,10 @@
-import { INCREMENT, DECREMENT, LOGIN, SAGALOGIN } from "./actionTypes";
+import {
+  INCREMENT,
+  DECREMENT,
+  LOGIN,
+  SAGALOGIN,
+  DASHBOARDDATA,
+} from "./actionTypes";
 
 export function incrementBy(payload) {
   return { type: INCREMENT, payload };
@@ -18,14 +24,25 @@ export function login(userName, passWord) {
   };
 }
 
-export function sagaLogin(userName, passWord, callbackFn) {
+export function sagaLogin(userName, passWord) {
   return {
     type: SAGALOGIN,
     payload: {
       userName,
       passWord,
     },
-    callbackFn,
+    // callbackFn,
     // same as callbackFn:callbackFn
+  };
+}
+
+export function getDashboardData(email, name, origin) {
+  return {
+    type: DASHBOARDDATA,
+    payload: {
+      email,
+      name,
+      origin,
+    },
   };
 }

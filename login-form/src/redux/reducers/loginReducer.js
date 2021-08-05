@@ -1,4 +1,10 @@
-import { INCREMENT, DECREMENT, LOGIN, SAGALOGIN } from "../actions/actionTypes";
+import {
+  INCREMENT,
+  DECREMENT,
+  LOGIN,
+  SAGALOGIN,
+  DASHBOARDDATA,
+} from "../actions/actionTypes";
 
 const initialState = {
   total: 0,
@@ -13,6 +19,12 @@ const initialUser = {
 const sagaUser = {
   userName: null,
   passWord: null,
+};
+
+const dashboardData = {
+  name: null,
+  origin: null,
+  email: null,
 };
 
 export default function exampleReducer(state = initialState, action) {
@@ -59,6 +71,20 @@ export function sagaLoginReducer(state = sagaUser, action) {
       return {
         ...state,
         loginResponse: action.payload,
+      };
+    default:
+      return state;
+  }
+}
+
+export function getDashboard(state = dashboardData, action) {
+  switch (action.type) {
+    case DASHBOARDDATA:
+      return {
+        ...state,
+        name: action.payload.name,
+        email: action.payload.email,
+        origin: action.payload.origin,
       };
     default:
       return state;
