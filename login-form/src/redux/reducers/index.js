@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 import exampleReducer, {
   loginReducer,
   sagaLoginReducer,
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   sagaExample: sagaLoginReducer,
   getDashboard: getDashboard,
+  form: formReducer,
 });
 
 export default rootReducer;
