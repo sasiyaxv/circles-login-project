@@ -5,10 +5,10 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import Login from "./components/page-components/Login";
+// import Login from "./components/page-components/Login";
 import { Dashboard } from "./components/page-components/Dashboard";
 import { constClass } from "./ConstClass";
-import { login } from "./redux/actions";
+// import { login } from "./redux/actions";
 import LoginReduxFormTest from "./redux/redux-form/LoginReduxForm";
 
 export const Routes = () => {

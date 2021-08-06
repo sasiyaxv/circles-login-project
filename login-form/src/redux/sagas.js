@@ -13,16 +13,16 @@ export function* userLogin({ payload }) {
 
 export function* getUserData() {
   try {
-    const newUser = yield call(doFetchUserData);
+    // const newUser = yield call(doFetchUserData);
   } catch (e) {
     yield put({ type: getDashboardData, message: e.message });
   }
 }
 
 export function* getUserDataSaga() {
-  yield takeLatest(getDashboardData, getUserData);
+  yield takeLatest("DASHBOARDDATA", getUserData);
 }
 
 export function* mySaga() {
-  yield takeLatest(sagaLogin, userLogin);
+  yield takeLatest("SAGALOGIN", userLogin);
 }

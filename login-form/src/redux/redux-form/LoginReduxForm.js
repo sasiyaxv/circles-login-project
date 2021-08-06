@@ -2,10 +2,9 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 let LoginReduxForm = ({ handleSubmit }) => {
-  //   return <div>HELLO</div>;
-  //   function handleSubmit(values) {
-  //     console.log(values);
-  //   }
+  function handleSubmit(values) {
+    console.log(values);
+  }
   return (
     <form onSubmit={handleSubmit}>
       <div>
