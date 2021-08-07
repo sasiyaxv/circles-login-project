@@ -13,7 +13,7 @@ export function* userLogin({ payload }) {
 
 export function* getUserData() {
   try {
-    // const newUser = yield call(doFetchUserData);
+    const newUser = yield call(doFetchUserData);
   } catch (e) {
     yield put({ type: getDashboardData, message: e.message });
   }

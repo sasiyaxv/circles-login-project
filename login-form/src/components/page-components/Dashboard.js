@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "rebass";
+import { getDashboardData } from "../../redux/actions";
+import { connect } from "react-redux";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
-// import { getDashboardData } from "../../redux/actions";
+
 // import { constClass } from "../../ConstClass";
 // import { doFetchUserData } from "../../FetchApi";
 
-export const Dashboard = (props) => {
+const Dashboard = (props) => {
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [origin, setOrigin] = useState();
@@ -24,6 +26,9 @@ export const Dashboard = (props) => {
 
   // async const newUser =await doFetchUserData();
   // console.log("AFTER", newUser);
+
+  // getDashboard();
+  // console.log("NEWUSER", user);
 
   return (
     <Box m={[2, 3, 4]}>
@@ -61,11 +66,21 @@ export const Dashboard = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   console.log("state", state);
-//   return {};
-// };
+const mapStateToProps = (state) => {
+  console.log("state", state);
+  return {
+    email: state.example.email,
+    name: state.login.name,
+    origin: state.login.origin,
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {};
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDashboard: () => {
+      dispatch(getDashboardData());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

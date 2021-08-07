@@ -175,8 +175,8 @@ const mapDispatchToProps = (dispatch) => {
     loginNow: (userName, passWord) => {
       dispatch(login(userName, passWord));
     },
-    loginSaga: (userName, passWord, callbackFn) => {
-      dispatch(sagaLogin(userName, passWord, callbackFn));
+    loginSaga: (userName, passWord) => {
+      dispatch(sagaLogin(userName, passWord));
     },
   };
 };

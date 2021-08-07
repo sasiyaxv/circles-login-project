@@ -36,13 +36,9 @@ export function sagaLogin(userName, passWord) {
   };
 }
 
-export function getDashboardData(email, name, origin) {
+export function getDashboardData() {
   return {
     type: DASHBOARDDATA,
-    payload: {
-      email,
-      name,
-      origin,
-    },
+    payload: {},
   };
 }
