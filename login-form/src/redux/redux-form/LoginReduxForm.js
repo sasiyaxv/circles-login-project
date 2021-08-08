@@ -1,25 +1,34 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, submit } from "redux-form";
 
-let LoginReduxForm = ({ handleSubmit }) => {
+let LoginReduxForm = (props) => {
+  const { handleSubmit, reset } = props;
+
+  // Validations for the login form
   const validations = (values) => {
     const errors = {};
-    if (!values.userName) {
+    if (!values.userName && !values.passWord) {
       errors.userName = "Required";
-    } else if (values.userName.length > 15) {
-      errors.userName = "Must be 15 characters or less";
+      errors.passWord = "Required";
+    } else if (values.passWord.length <= 8) {
+      errors.passWord = "Must be at least 8 characters.";
     }
     console.log("ERR", errors);
     return errors;
   };
 
-  function handleSubmit(values) {
-    values.preventDefault();
-    console.log(values);
-    validations(values);
-  }
+  // To reset the form
+  const resetClicked = () => {
+    reset();
+  };
+
+  // function handleSubmit(values) {
+  //   values.preventDefault();
+  //   console.log(values);
+  //   validations(values);
+  // }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(submit)}>
       <div>
         <label htmlFor="userName">UserName</label>
         <br />
@@ -29,7 +38,11 @@ let LoginReduxForm = ({ handleSubmit }) => {
         <label htmlFor="passWord">PassWord</label> <br />
         <Field type="password" name="passWord" component="input" />
       </div>
+      <br />
       <button type="submit">Submit</button>
+      <button type="reset" onClick={resetClicked}>
+        Reset
+      </button>
     </form>
   );
 };

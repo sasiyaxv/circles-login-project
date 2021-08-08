@@ -69,9 +69,9 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
   console.log("state", state);
   return {
-    email: state.example.email,
-    name: state.login.name,
-    origin: state.login.origin,
+    email: state.email,
+    name: state.name,
+    origin: state.origin,
   };
 };
 
