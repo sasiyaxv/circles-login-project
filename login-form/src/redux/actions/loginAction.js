@@ -2,8 +2,8 @@ import {
   INCREMENT,
   DECREMENT,
   LOGIN,
-  SAGALOGIN,
-  DASHBOARDDATA,
+  SAGA_LOGIN,
+  DASHBOARD_DATA,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
@@ -26,7 +26,7 @@ export function login(userName, passWord) {
 
 export function sagaLogin(userName, passWord) {
   return {
-    type: SAGALOGIN,
+    type: SAGA_LOGIN,
     payload: {
       userName,
       passWord,
@@ -38,7 +38,14 @@ export function sagaLogin(userName, passWord) {
 
 export function getDashboardData() {
   return {
-    type: DASHBOARDDATA,
+    type: DASHBOARD_DATA,
     payload: {},
+  };
+}
+
+export function dashboardSuccess(user) {
+  return {
+    type: "DASHBOARD_SUCCESS",
+    payload: user,
   };
 }

@@ -5,7 +5,8 @@ const app = express();
 // To fix cors origin error
 app.use(cors());
 
-app.get("/user-service/user-details", (req, res) => {
+app.get("/user-service/user-details", async (req, res) => {
+  await sleep(500);
   res.json({
     email: "admin@circles.asia",
     name: "Admin 1",
@@ -40,3 +41,9 @@ app.get("/user-service/login/:username/:password", (req, res) => {
 app.listen(5000, () => {
   console.log("server is listening on port 5000");
 });
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}

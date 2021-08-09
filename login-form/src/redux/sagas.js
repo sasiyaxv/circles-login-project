@@ -14,15 +14,15 @@ export function* userLogin({ payload }) {
 export function* getUserData() {
   try {
     const newUser = yield call(doFetchUserData);
-  } catch (e) {
-    yield put({ type: getDashboardData, message: e.message });
-  }
+    yield put({ type: "DASHBOARD_SUCCESS", payload: newUser });
+  } catch (e) {}
 }
 
-export function* getUserDataSaga() {
-  yield takeLatest("DASHBOARDDATA", getUserData);
-}
+// export function* getUserDataSaga() {
+//   console.log("TEST");
+// }
 
 export function* mySaga() {
-  yield takeLatest("SAGALOGIN", userLogin);
+  yield takeLatest("SAGA_LOGIN", userLogin);
+  yield takeLatest("DASHBOARD_DATA", getUserData);
 }

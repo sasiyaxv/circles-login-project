@@ -22,13 +22,8 @@ let LoginReduxForm = (props) => {
     reset();
   };
 
-  // function handleSubmit(values) {
-  //   values.preventDefault();
-  //   console.log(values);
-  //   validations(values);
-  // }
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form onSubmit={handleSubmit(validations)}>
       <div>
         <label htmlFor="userName">UserName</label>
         <br />

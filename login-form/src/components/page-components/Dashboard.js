@@ -1,34 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Box } from "rebass";
-import { getDashboardData } from "../../redux/actions";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Box } from "rebass";
 
+import { getDashboardData } from "../../redux/actions";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 
-// import { constClass } from "../../ConstClass";
-// import { doFetchUserData } from "../../FetchApi";
-
-const Dashboard = (props) => {
-  const [email, setEmail] = useState();
-  const [name, setName] = useState();
-  const [origin, setOrigin] = useState();
-
+const Dashboard = ({ getDashboard, email, name, origin, isLoading }) => {
   useEffect(() => {
-    // fetch(constClass.BASE_URL + "/user-service/user-details")
-    //   .then((response) => response.json())
-    //   .then(function setValues(response) {
-    //     setEmail(response.email);
-    //     setName(response.name);
-    //     setOrigin(response.origin);
-    //   });
+    const user = getDashboard();
+    console.log("NEWUSER", user);
   }, []);
-
-  // async const newUser =await doFetchUserData();
-  // console.log("AFTER", newUser);
-
-  // getDashboard();
-  // console.log("NEWUSER", user);
 
   return (
     <Box m={[2, 3, 4]}>
@@ -51,16 +33,19 @@ const Dashboard = (props) => {
           marginBottom={[2, 3, 4]}
           marginTop={[2, 3, 4]}
         />
-
-        <RebassLabel
-          fontSize={[2, 3, 4]}
-          fontWeight="bold"
-          fontFamily="serif"
-          name={`
+        {!isLoading ? (
+          <RebassLabel
+            fontSize={[2, 3, 4]}
+            fontWeight="bold"
+            fontFamily="serif"
+            name={`
           Email address : ${email} 
           Name : ${name}
          Origin Port : ${origin}`}
-        />
+          />
+        ) : (
+          "isLoading..."
+        )}
       </Box>
     </Box>
   );
@@ -69,9 +54,10 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
   console.log("state", state);
   return {
-    email: state.email,
-    name: state.name,
-    origin: state.origin,
+    email: state.getDashboard.email,
+    name: state.getDashboard.name,
+    origin: state.getDashboard.origin,
+    isLoading: state.getDashboard.isLoading,
   };
 };
 
