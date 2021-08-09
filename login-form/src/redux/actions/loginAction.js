@@ -4,6 +4,7 @@ import {
   LOGIN,
   SAGA_LOGIN,
   DASHBOARD_DATA,
+  DASHBOARD_SUCCESS,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
@@ -45,7 +46,7 @@ export function getDashboardData() {
 
 export function dashboardSuccess(user) {
   return {
-    type: "DASHBOARD_SUCCESS",
+    type: DASHBOARD_SUCCESS,
     payload: user,
   };
 }

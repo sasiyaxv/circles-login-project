@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Field, reduxForm, submit } from "redux-form";
+import { RebassHeading } from "../../components/ui-components/RebassHeading";
+import { RebassLabel } from "../../components/ui-components/RebassLabel";
+import "./formCss.css";
 
 let LoginReduxForm = (props) => {
   const { handleSubmit, reset } = props;
+
+  useEffect(() => {
+    console.log("RESPONSE");
+  }, []);
 
   // Validations for the login form
   const validations = (values) => {
@@ -13,7 +20,7 @@ let LoginReduxForm = (props) => {
     } else if (values.passWord.length <= 8) {
       errors.passWord = "Must be at least 8 characters.";
     }
-    console.log("ERR", errors);
+    console.log("Error Occurred", errors);
     return errors;
   };
 
@@ -23,14 +30,35 @@ let LoginReduxForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(validations)}>
+    <form className="form-container" onSubmit={handleSubmit(validations)}>
+      <RebassHeading
+        name={"Ready to take a challenge?"}
+        fontSize={[5, 6, 7]}
+        textAlign="center"
+      />
+      <RebassHeading
+        fontSize={[3, 4, 5]}
+        marginBottom={[2, 3, 4]}
+        name={"Login to pick a challenge"}
+      />
       <div>
-        <label htmlFor="userName">UserName</label>
+        <RebassLabel
+          fontSize={[2, 3, 4]}
+          marginBottom={[1, 2, 3]}
+          name={"userName"}
+          htmlFor="userName"
+        />
         <br />
         <Field type="text" name="userName" component="input" />
       </div>
       <div>
-        <label htmlFor="passWord">PassWord</label> <br />
+        <RebassLabel
+          fontSize={[2, 3, 4]}
+          marginBottom={[1, 2, 3]}
+          name={"Password"}
+          htmlFor="passWord"
+        />
+        <br />
         <Field type="password" name="passWord" component="input" />
       </div>
       <br />
