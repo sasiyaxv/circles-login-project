@@ -2,8 +2,13 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
+// var bodyParser = require('body-parser')
+
+// var urlEncodedParser =app.use(bodyParser.urlencoded({ extended: false }))
+
 // To fix cors origin error
-app.use(cors());
+app.use(cors(), express.urlencoded({ extended: false }));
 
 app.get("/user-service/user-details", async (req, res) => {
   await sleep(500);
@@ -29,6 +34,35 @@ app.get("/user-service/login/:username/:password", (req, res) => {
     res.json({
       status: "success",
       message: `Hello ${username}`,
+    });
+  } else {
+    res.json({
+      status: "fail",
+      message: "Oh no, Login is not working.",
+    });
+  }
+});
+
+// app.post("/withpost", urlencodedParser, function (req, res) {
+//   console.log(req.body);
+//   res.send("ok");
+// });
+
+app.post("/test", function (req, res) {
+  console.log(req.body);
+
+  const userName = req.body.userName;
+  const passWord = req.body.passWord;
+
+  console.log("userName : ", userName, "Password : ", passWord);
+  if (
+    userName.trim() === "admin@circles.asia" &&
+    passWord.trim() === "circles111"
+  ) {
+    console.log("Hooray, It's working.");
+    res.json({
+      status: "success",
+      message: `Hello ${userName}`,
     });
   } else {
     res.json({
