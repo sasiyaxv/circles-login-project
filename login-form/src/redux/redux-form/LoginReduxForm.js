@@ -1,36 +1,27 @@
-import React, { useEffect } from "react";
-import { Field, reduxForm, submit } from "redux-form";
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { sagaLogin } from "../../redux/actions";
 import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
 import "./formCss.css";
 
 let LoginReduxForm = (props) => {
-  const { handleSubmit, reset } = props;
-
-  useEffect(() => {
-    console.log("RESPONSE");
-  }, []);
-
-  // Validations for the login form
-  const validations = (values) => {
-    const errors = {};
-    if (!values.userName && !values.passWord) {
-      errors.userName = "Required";
-      errors.passWord = "Required";
-    } else if (values.passWord.length <= 8) {
-      errors.passWord = "Must be at least 8 characters.";
-    }
-    console.log("Error Occurred", errors);
-    return errors;
-  };
+  console.log("PROPS", props);
+  const { handleSubmit, reset, userName, passWord, loginSaga } = props;
 
   // To reset the form
   const resetClicked = () => {
     reset();
   };
 
+  const wrappedLoginSaga = () => {
+    loginSaga(userName, passWord);
+  };
+
   return (
-    <form className="form-container" onSubmit={handleSubmit(validations)}>
+    <form className="form-container" onSubmit={handleSubmit(wrappedLoginSaga)}>
       <RebassHeading
         name={"Ready to take a challenge?"}
         fontSize={[5, 6, 7]}
@@ -45,7 +36,7 @@ let LoginReduxForm = (props) => {
         <RebassLabel
           fontSize={[2, 3, 4]}
           marginBottom={[1, 2, 3]}
-          name={"userName"}
+          name={"Username"}
           htmlFor="userName"
         />
         <br />
@@ -70,8 +61,55 @@ let LoginReduxForm = (props) => {
   );
 };
 
-const LoginReduxFormTest = reduxForm({
-  form: "loginForm",
-})(LoginReduxForm);
+// Validations for the login form
+const validations = (values) => {
+  const errors = {};
+  if (!values.userName && !values.passWord) {
+    errors.userName = "Required";
+    errors.passWord = "Required";
+  } else if (values.passWord?.length <= 8) {
+    errors.passWord = "Must be at least 8 characters.";
+  }
+  console.log("Error Occurred", errors);
+  return errors;
+};
 
-export default LoginReduxFormTest;
+const mapStateToProps = (state) => {
+  console.log("state", state);
+  return {
+    userName: state.form?.loginForm?.values?.userName,
+    passWord: state.form?.loginForm?.values?.passWord,
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loginSaga: (userName, passWord) => {
+      dispatch(
+        sagaLogin(userName, passWord, () => {
+          ownProps.history.push("/dashboard");
+        })
+      );
+    },
+  };
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+  withConnect,
+  reduxForm({
+    validate: validations,
+    form: "loginForm", // a unique identifier for this form | function declaration would be invalid, if we didn’t specify any name:
+  })
+)(LoginReduxForm);
+
+// const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+//   ...stateProps,
+//   ...dispatchProps,
+//   ...ownProps,
+//   loginSaga: {
+//     // you can access the state and call dispatch here
+//   }
+//   })
+// const withConnect = connect(mapStateToProps, mapDispatchToProps, mergeProps);

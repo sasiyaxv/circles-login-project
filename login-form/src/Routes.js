@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import Login from "./components/page-components/Login";
 import Dashboard from "./components/page-components/Dashboard";
@@ -12,9 +13,10 @@ import { constClass } from "./ConstClass";
 import LoginReduxFormTest from "./redux/redux-form/LoginReduxForm";
 
 export const Routes = () => {
+  const history = useHistory();
   return (
     <div>
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route
             exact

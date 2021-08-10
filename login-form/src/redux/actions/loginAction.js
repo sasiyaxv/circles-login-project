@@ -25,13 +25,14 @@ export function login(userName, passWord) {
   };
 }
 
-export function sagaLogin(userName, passWord) {
+export function sagaLogin(userName, passWord, callback) {
   return {
     type: SAGA_LOGIN,
     payload: {
       userName,
       passWord,
     },
+    callback,
     // callbackFn,
     // same as callbackFn:callbackFn
   };
