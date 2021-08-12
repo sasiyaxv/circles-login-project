@@ -70,3 +70,13 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
+
+// email: getUserEmailSelector()
+// function getDashboardDomainSelector(state) {
+//   return state.getDashboard
+// }
+
+// function getUserEmailSelector(state) {
+//   return getDashboardDomainSelector(state).email
+// }

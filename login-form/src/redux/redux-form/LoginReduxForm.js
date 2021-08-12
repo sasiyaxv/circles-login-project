@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { sagaLogin } from "../../redux/actions";
+import { sagaLogin, getDataConfigAction } from "../../redux/actions";
 import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
+import { fetchSettingsData } from "../../FetchApi";
 import "./formCss.css";
+import { getSettingsSaga } from "../sagas";
 
 let LoginReduxForm = (props) => {
   console.log("PROPS", props);
-  const { handleSubmit, reset, userName, passWord, loginSaga } = props;
+  const {
+    handleSubmit,
+    reset,
+    userName,
+    passWord,
+    loginSaga,
+    getLoginDataConfig,
+  } = props;
+
+  useEffect(() => {
+    fetchSettingsData();
+    // getSettingsSaga();
+  }, []);
 
   // To reset the form
   const resetClicked = () => {
@@ -40,7 +54,12 @@ let LoginReduxForm = (props) => {
           htmlFor="userName"
         />
         <br />
-        <Field type="text" name="userName" component="input" />
+        <Field
+          className="form-field"
+          type="text"
+          name="userName"
+          component="input"
+        />
       </div>
       <div>
         <RebassLabel
@@ -50,11 +69,19 @@ let LoginReduxForm = (props) => {
           htmlFor="passWord"
         />
         <br />
-        <Field type="password" name="passWord" component="input" />
+
+        <Field
+          className="form-field"
+          type="password"
+          name="passWord"
+          component="input"
+        />
       </div>
       <br />
-      <button type="submit">Submit</button>
-      <button type="reset" onClick={resetClicked}>
+      <button className="form-submit-btn" type="submit">
+        Submit
+      </button>
+      <button className="form-reset-btn" type="reset" onClick={resetClicked}>
         Reset
       </button>
     </form>
@@ -90,6 +117,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           ownProps.history.push("/dashboard");
         })
       );
+    },
+    getLoginDataConfig: () => {
+      dispatch(getDataConfigAction(() => {}));
     },
   };
 };

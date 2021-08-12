@@ -9,3 +9,5 @@ export const SAGA_LOGIN = "SAGA_LOGIN";
 export const DASHBOARD_DATA = "DASHBOARD_DATA";
 
 export const DASHBOARD_SUCCESS = "DASHBOARD_SUCCESS";
+
+export const GET_SETTINGS = "GET_SETTINGS";

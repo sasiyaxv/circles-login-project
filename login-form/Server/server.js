@@ -6,6 +6,17 @@ const app = express();
 // To fix cors origin error
 app.use(cors(), express.urlencoded({ extended: false }));
 
+app.get("/app-settings", (req, res) => {
+  res.json({
+    login: {
+      loginHeader: " test",
+    },
+    dashboard: {
+      dashboardHeader: "test2 ",
+    },
+  });
+});
+
 app.get("/user-service/user-details", async (req, res) => {
   await sleep(500);
   res.json({

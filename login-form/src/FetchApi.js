@@ -2,6 +2,17 @@ import { constClass } from "./ConstClass";
 
 const axios = require("axios");
 
+export const fetchSettingsData = () => {
+  return axios
+    .get(constClass.BASE_URL + "/app-settings", {})
+    .then(function (response) {
+      console.log("Initial values : ", response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const doFetch = (userName, passWord) => {
   return axios
     .post(constClass.BASE_URL + "/user-service/login", {

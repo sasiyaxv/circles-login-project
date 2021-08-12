@@ -4,7 +4,14 @@ import {
   LOGIN,
   SAGA_LOGIN,
   DASHBOARD_DATA,
+  GET_SETTINGS,
 } from "../actions/actionTypes";
+
+const initialValuesConfig = {
+  loginHeader: null,
+  loginSubHeader: null,
+  dashBoardHeader: null,
+};
 
 const initialState = {
   total: 0,
@@ -27,6 +34,20 @@ const dashboardData = {
   email: null,
   isLoading: false,
 };
+
+export function setValuesReducer(state = initialValuesConfig, action) {
+  switch (action.type) {
+    case GET_SETTINGS:
+      return {
+        ...state,
+        loginHeader: action.payload.loginHeader,
+        loginSubHeader: action.payload.loginSubHeader,
+        dashBoardHeader: action.payload.dashBoardHeader,
+      };
+    default:
+      return state;
+  }
+}
 
 export default function exampleReducer(state = initialState, action) {
   switch (action.type) {

@@ -5,6 +5,7 @@ import {
   SAGA_LOGIN,
   DASHBOARD_DATA,
   DASHBOARD_SUCCESS,
+  GET_SETTINGS,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
@@ -49,5 +50,12 @@ export function dashboardSuccess(user) {
   return {
     type: DASHBOARD_SUCCESS,
     payload: user,
+  };
+}
+
+export function getDataConfigAction(obj) {
+  return {
+    type: GET_SETTINGS,
+    payload: obj,
   };
 }

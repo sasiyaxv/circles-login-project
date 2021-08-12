@@ -4,6 +4,7 @@ import exampleReducer, {
   loginReducer,
   sagaLoginReducer,
   getDashboard,
+  setValuesReducer,
 } from "./loginReducer";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   sagaExample: sagaLoginReducer,
   getDashboard: getDashboard,
+  setValuesReducer: setValuesReducer,
   form: formReducer,
 });
 

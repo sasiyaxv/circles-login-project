@@ -5,3 +5,20 @@ body {
 .form-container {
   /* background-color: aqua; */
 }
+
+.form-field {
+  width: 250px;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.form-submit-btn {
+  margin-right: 10px;
+  height: 30px;
+  width: 70px;
+}
+
+.form-reset-btn {
+  height: 30px;
+  width: 70px;
+}
