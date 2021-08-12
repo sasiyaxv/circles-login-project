@@ -21,8 +21,7 @@ let LoginReduxForm = (props) => {
   } = props;
 
   useEffect(() => {
-    fetchSettingsData();
-    // getSettingsSaga();
+    getLoginDataConfig();
   }, []);
 
   // To reset the form
