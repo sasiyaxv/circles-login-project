@@ -6,6 +6,7 @@ import {
   DASHBOARD_DATA,
   DASHBOARD_SUCCESS,
   GET_SETTINGS,
+  GET_SETTINGS_SUCCESS,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
@@ -53,9 +54,15 @@ export function dashboardSuccess(user) {
   };
 }
 
-export function getDataConfigAction(obj) {
+export function getDataConfigAction() {
   return {
     type: GET_SETTINGS,
-    payload: obj,
+  };
+}
+
+export function getDataConfigActionSuccess(dataObj) {
+  return {
+    type: GET_SETTINGS_SUCCESS,
+    payload: dataObj,
   };
 }

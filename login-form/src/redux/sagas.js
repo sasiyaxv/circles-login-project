@@ -1,12 +1,18 @@
 import { call, put, takeLatest } from "@redux-saga/core/effects";
 import { doFetch, doFetchUserData, fetchSettingsData } from "../FetchApi";
 import { sagaLogin } from "./actions";
-import { SAGA_LOGIN, GET_SETTINGS } from "./actions/actionTypes";
+import {
+  SAGA_LOGIN,
+  GET_SETTINGS,
+  GET_SETTINGS_SUCCESS,
+} from "./actions/actionTypes";
+
+// REMEMBER TO ADD 2 TYPES OF ACTIONS
 
 export function* getSettingsSaga() {
   try {
     const dataObj = yield call(fetchSettingsData);
-    yield put({ type: GET_SETTINGS, payload: dataObj });
+    yield put({ type: GET_SETTINGS_SUCCESS, payload: dataObj });
   } catch (e) {}
 }
 

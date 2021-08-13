@@ -9,7 +9,8 @@ app.use(cors(), express.urlencoded({ extended: false }));
 app.get("/app-settings", (req, res) => {
   res.json({
     login: {
-      loginHeader: " test",
+      loginHeader: " Ready to Take a Challenge",
+      subLoginHeader: "Login Here",
     },
     dashboard: {
       dashboardHeader: "test2 ",

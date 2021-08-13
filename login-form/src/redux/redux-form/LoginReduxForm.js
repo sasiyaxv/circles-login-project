@@ -5,9 +5,7 @@ import { compose } from "redux";
 import { sagaLogin, getDataConfigAction } from "../../redux/actions";
 import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
-import { fetchSettingsData } from "../../FetchApi";
 import "./formCss.css";
-import { getSettingsSaga } from "../sagas";
 
 let LoginReduxForm = (props) => {
   console.log("PROPS", props);
@@ -18,6 +16,8 @@ let LoginReduxForm = (props) => {
     passWord,
     loginSaga,
     getLoginDataConfig,
+    loginHeader,
+    loginSubHeader,
   } = props;
 
   useEffect(() => {
@@ -36,14 +36,14 @@ let LoginReduxForm = (props) => {
   return (
     <form className="form-container" onSubmit={handleSubmit(wrappedLoginSaga)}>
       <RebassHeading
-        name={"Ready to take a challenge?"}
+        name={loginHeader}
         fontSize={[5, 6, 7]}
         textAlign="center"
       />
       <RebassHeading
         fontSize={[3, 4, 5]}
         marginBottom={[2, 3, 4]}
-        name={"Login to pick a challenge"}
+        name={loginSubHeader}
       />
       <div>
         <RebassLabel
@@ -101,10 +101,12 @@ const validations = (values) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
+  console.log("stateREDUXFORM", state);
   return {
     userName: state.form?.loginForm?.values?.userName,
     passWord: state.form?.loginForm?.values?.passWord,
+    loginHeader: state.setValuesReducer.loginHeader,
+    loginSubHeader: state.setValuesReducer.loginSubHeader,
   };
 };
 

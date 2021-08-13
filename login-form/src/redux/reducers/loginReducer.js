@@ -5,6 +5,7 @@ import {
   SAGA_LOGIN,
   DASHBOARD_DATA,
   GET_SETTINGS,
+  GET_SETTINGS_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialValuesConfig = {
@@ -38,10 +39,12 @@ const dashboardData = {
 export function setValuesReducer(state = initialValuesConfig, action) {
   switch (action.type) {
     case GET_SETTINGS:
+      return {};
+    case GET_SETTINGS_SUCCESS:
       return {
         ...state,
         loginHeader: action.payload.loginHeader,
-        loginSubHeader: action.payload.loginSubHeader,
+        loginSubHeader: action.payload.subLoginHeader,
         dashBoardHeader: action.payload.dashBoardHeader,
       };
     default:

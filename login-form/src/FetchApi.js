@@ -7,6 +7,12 @@ export const fetchSettingsData = () => {
     .get(constClass.BASE_URL + "/app-settings", {})
     .then(function (response) {
       console.log("Initial values : ", response);
+      let configObj = {
+        loginHeader: response.data.login.loginHeader,
+        subLoginHeader: response.data.login.subLoginHeader,
+      };
+      console.log("VALUES", configObj);
+      return configObj;
     })
     .catch(function (error) {
       console.log(error);
