@@ -13,7 +13,8 @@ app.get("/app-settings", (req, res) => {
       subLoginHeader: "Login Here",
     },
     dashboard: {
-      dashboardHeader: "test2 ",
+      dashboardHeader: "Hey, I see you got through the login.",
+      dashboardSubHeader: "Information",
     },
   });
 });

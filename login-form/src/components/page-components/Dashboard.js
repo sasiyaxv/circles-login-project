@@ -6,7 +6,14 @@ import { getDashboardData } from "../../redux/actions";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 
-const Dashboard = ({ getDashboard, email, name, origin, isLoading }) => {
+const Dashboard = ({
+  getDashboard,
+  email,
+  name,
+  origin,
+  isLoading,
+  dashBoardHeader,
+}) => {
   useEffect(() => {
     const user = getDashboard();
     console.log("NEWUSER", user);
@@ -15,7 +22,7 @@ const Dashboard = ({ getDashboard, email, name, origin, isLoading }) => {
   return (
     <Box m={[2, 3, 4]}>
       <RebassHeading
-        name={" Hello! I see you got through the login"}
+        name={dashBoardHeader}
         fontSize={[5, 6, 7]}
         textAlign={"center"}
       />
@@ -58,6 +65,7 @@ const mapStateToProps = (state) => {
     name: state.getDashboard.name,
     origin: state.getDashboard.origin,
     isLoading: state.getDashboard.isLoading,
+    dashBoardHeader: state.setValuesReducer.dashBoardHeader,
   };
 };
 
@@ -70,7 +78,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
 
 // email: getUserEmailSelector()
 // function getDashboardDomainSelector(state) {

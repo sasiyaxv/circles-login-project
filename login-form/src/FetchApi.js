@@ -10,6 +10,7 @@ export const fetchSettingsData = () => {
       let configObj = {
         loginHeader: response.data.login.loginHeader,
         subLoginHeader: response.data.login.subLoginHeader,
+        dashboardHeader: response.data.dashboard.dashboardHeader,
       };
       console.log("VALUES", configObj);
       return configObj;

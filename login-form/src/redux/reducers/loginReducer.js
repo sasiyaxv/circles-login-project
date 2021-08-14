@@ -45,7 +45,7 @@ export function setValuesReducer(state = initialValuesConfig, action) {
         ...state,
         loginHeader: action.payload.loginHeader,
         loginSubHeader: action.payload.subLoginHeader,
-        dashBoardHeader: action.payload.dashBoardHeader,
+        dashBoardHeader: action.payload.dashboardHeader,
       };
     default:
       return state;
