@@ -5,6 +5,8 @@ import {
   SAGA_LOGIN,
   GET_SETTINGS,
   GET_SETTINGS_SUCCESS,
+  DASHBOARD_DATA,
+  DASHBOARD_SUCCESS,
 } from "./actions/actionTypes";
 
 // REMEMBER TO ADD 2 TYPES OF ACTIONS
@@ -29,12 +31,12 @@ export function* userLogin({ payload, callback }) {
 export function* getUserData() {
   try {
     const newUser = yield call(doFetchUserData);
-    yield put({ type: "DASHBOARD_SUCCESS", payload: newUser });
+    yield put({ type: DASHBOARD_SUCCESS, payload: newUser });
   } catch (e) {}
 }
 
 export function* mySaga() {
   yield takeLatest(SAGA_LOGIN, userLogin);
-  yield takeLatest("DASHBOARD_DATA", getUserData);
+  yield takeLatest(DASHBOARD_DATA, getUserData);
   yield takeLatest(GET_SETTINGS, getSettingsSaga);
 }
