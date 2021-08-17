@@ -1,11 +1,12 @@
 import {
-  INCREMENT,
-  DECREMENT,
-  LOGIN,
-  SAGA_LOGIN,
-  DASHBOARD_DATA,
-  GET_SETTINGS,
-  GET_SETTINGS_SUCCESS,
+  INCREMENT_ACTION,
+  DECREMENT_ACTION,
+  POST_USER_LOGIN_ACTION,
+  SAGA_LOGIN_ACTION,
+  FETCH_DASHBOARD_DATA_ACTION,
+  FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
+  GET_SETTINGS_ACTION,
+  GET_SETTINGS_ACTION_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialValuesConfig = {
@@ -38,9 +39,9 @@ const dashboardData = {
 
 export function setValuesReducer(state = initialValuesConfig, action) {
   switch (action.type) {
-    case GET_SETTINGS:
+    case GET_SETTINGS_ACTION:
       return {};
-    case GET_SETTINGS_SUCCESS:
+    case GET_SETTINGS_ACTION_SUCCESS:
       return {
         ...state,
         loginHeader: action.payload.loginHeader,
@@ -54,13 +55,13 @@ export function setValuesReducer(state = initialValuesConfig, action) {
 
 export default function exampleReducer(state = initialState, action) {
   switch (action.type) {
-    case INCREMENT:
+    case INCREMENT_ACTION:
       return {
         ...state,
         total: state.total + action.payload,
       };
 
-    case DECREMENT:
+    case DECREMENT_ACTION:
       return {
         ...state,
         total: state.total - action.payload,
@@ -73,7 +74,7 @@ export default function exampleReducer(state = initialState, action) {
 
 export function loginReducer(state = initialUser, action) {
   switch (action.type) {
-    case LOGIN:
+    case POST_USER_LOGIN_ACTION:
       return {
         ...state,
         userName: action.payload.userName,
@@ -86,7 +87,7 @@ export function loginReducer(state = initialUser, action) {
 
 export function sagaLoginReducer(state = sagaUser, action) {
   switch (action.type) {
-    case SAGA_LOGIN:
+    case SAGA_LOGIN_ACTION:
       return {
         ...state,
         userName: action.payload.userName,
@@ -104,12 +105,12 @@ export function sagaLoginReducer(state = sagaUser, action) {
 
 export function getDashboard(state = dashboardData, action) {
   switch (action.type) {
-    case DASHBOARD_DATA:
+    case FETCH_DASHBOARD_DATA_ACTION:
       return {
         ...state,
         isLoading: true,
       };
-    case "DASHBOARD_SUCCESS":
+    case FETCH_DASHBOARD_DATA_ACTION_SUCCESS:
       return {
         ...state,
         name: action.payload.name,

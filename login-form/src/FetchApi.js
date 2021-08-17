@@ -1,28 +1,33 @@
-import { constClass } from "./ConstClass";
+import { ROUTES, API_PATHS, BASE_URL } from "./constants";
 
 const axios = require("axios");
 
 export const fetchSettingsData = () => {
   return axios
-    .get(constClass.BASE_URL + "/app-settings", {})
+    .get(BASE_URL + API_PATHS.appSettings, {})
     .then(function (response) {
       console.log("Initial values : ", response);
       let configObj = {
-        loginHeader: response.data.login.loginHeader,
-        subLoginHeader: response.data.login.subLoginHeader,
-        dashboardHeader: response.data.dashboard.dashboardHeader,
+        loginHeader: response.data.login?.loginHeader,
+        subLoginHeader: response.data.login?.subLoginHeader,
+        dashboardHeader: response.data.dashboard?.dashboardHeader,
       };
       console.log("VALUES", configObj);
       return configObj;
     })
     .catch(function (error) {
       console.log(error);
+      return {
+        loginHeader: "",
+        subLoginHeader: "",
+        dashboardHeader: "",
+      };
     });
 };
 
 export const doFetch = (userName, passWord) => {
   return axios
-    .post(constClass.BASE_URL + "/user-service/login", {
+    .post(BASE_URL + API_PATHS.login, {
       userName: userName,
       passWord: passWord,
     })
@@ -32,11 +37,12 @@ export const doFetch = (userName, passWord) => {
     })
     .catch(function (error) {
       console.log(error);
+      return " ";
     });
 };
 export const doFetchUserData = () => {
   return axios
-    .get(constClass.BASE_URL + "/user-service/user-details")
+    .get(BASE_URL + API_PATHS.dashboard)
     .then(function (response) {
       console.log("RESPONSE", response);
       console.log("EMAIL", response.email);
@@ -51,5 +57,10 @@ export const doFetchUserData = () => {
     })
     .catch((err) => {
       console.log(err);
+      return {
+        email: "",
+        name: "",
+        origin: "",
+      };
     });
 };
