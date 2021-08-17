@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
-import { constClass } from "../../ConstClass";
+import { errorMessages } from "../../constants";
 import { incrementBy, login, sagaLogin } from "../../redux/actions";
 
 const Login = (props) => {
@@ -23,7 +23,7 @@ const Login = (props) => {
     if (loginResponse === "success") {
       history.push("/dashboard");
     } else {
-      setResponseMessage(constClass.errorMessage);
+      setResponseMessage(errorMessages.loginError);
     }
   }, [loginResponse]);
 

@@ -1,25 +1,25 @@
 import {
-  INCREMENT,
-  DECREMENT,
-  LOGIN,
-  SAGA_LOGIN,
-  DASHBOARD_DATA,
-  DASHBOARD_SUCCESS,
-  GET_SETTINGS,
-  GET_SETTINGS_SUCCESS,
+  INCREMENT_ACTION,
+  DECREMENT_ACTION,
+  POST_USER_LOGIN_ACTION,
+  SAGA_LOGIN_ACTION,
+  FETCH_DASHBOARD_DATA_ACTION,
+  FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
+  GET_SETTINGS_ACTION,
+  GET_SETTINGS_ACTION_SUCCESS,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
-  return { type: INCREMENT, payload };
+  return { type: INCREMENT_ACTION, payload };
 }
 
 export function decrementBy(payload) {
-  return { type: DECREMENT, payload };
+  return { type: DECREMENT_ACTION, payload };
 }
 
 export function login(userName, passWord) {
   return {
-    type: LOGIN,
+    type: POST_USER_LOGIN_ACTION,
     payload: {
       userName,
       passWord,
@@ -29,7 +29,7 @@ export function login(userName, passWord) {
 
 export function sagaLogin(userName, passWord, callback) {
   return {
-    type: SAGA_LOGIN,
+    type: SAGA_LOGIN_ACTION,
     payload: {
       userName,
       passWord,
@@ -42,27 +42,27 @@ export function sagaLogin(userName, passWord, callback) {
 
 export function getDashboardData() {
   return {
-    type: DASHBOARD_DATA,
+    type: FETCH_DASHBOARD_DATA_ACTION,
     payload: {},
   };
 }
 
 export function dashboardSuccess(user) {
   return {
-    type: DASHBOARD_SUCCESS,
+    type: FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
     payload: user,
   };
 }
 
 export function getDataConfigAction() {
   return {
-    type: GET_SETTINGS,
+    type: GET_SETTINGS_ACTION,
   };
 }
 
 export function getDataConfigActionSuccess(dataObj) {
   return {
-    type: GET_SETTINGS_SUCCESS,
+    type: GET_SETTINGS_ACTION_SUCCESS,
     payload: dataObj,
   };
 }

@@ -2,11 +2,11 @@ import { call, put, takeLatest } from "@redux-saga/core/effects";
 import { doFetch, doFetchUserData, fetchSettingsData } from "../FetchApi";
 import { sagaLogin } from "./actions";
 import {
-  SAGA_LOGIN,
-  GET_SETTINGS,
-  GET_SETTINGS_SUCCESS,
-  DASHBOARD_DATA,
-  DASHBOARD_SUCCESS,
+  SAGA_LOGIN_ACTION,
+  GET_SETTINGS_ACTION,
+  GET_SETTINGS_ACTION_SUCCESS,
+  FETCH_DASHBOARD_DATA_ACTION,
+  FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
 } from "./actions/actionTypes";
 
 // REMEMBER TO ADD 2 TYPES OF ACTIONS
@@ -14,7 +14,7 @@ import {
 export function* getSettingsSaga() {
   try {
     const dataObj = yield call(fetchSettingsData);
-    yield put({ type: GET_SETTINGS_SUCCESS, payload: dataObj });
+    yield put({ type: GET_SETTINGS_ACTION_SUCCESS, payload: dataObj });
   } catch (e) {}
 }
 
@@ -31,12 +31,12 @@ export function* userLogin({ payload, callback }) {
 export function* getUserData() {
   try {
     const newUser = yield call(doFetchUserData);
-    yield put({ type: DASHBOARD_SUCCESS, payload: newUser });
+    yield put({ type: FETCH_DASHBOARD_DATA_ACTION_SUCCESS, payload: newUser });
   } catch (e) {}
 }
 
 export function* mySaga() {
-  yield takeLatest(SAGA_LOGIN, userLogin);
-  yield takeLatest(DASHBOARD_DATA, getUserData);
-  yield takeLatest(GET_SETTINGS, getSettingsSaga);
+  yield takeLatest(SAGA_LOGIN_ACTION, userLogin);
+  yield takeLatest(FETCH_DASHBOARD_DATA_ACTION, getUserData);
+  yield takeLatest(GET_SETTINGS_ACTION, getSettingsSaga);
 }
