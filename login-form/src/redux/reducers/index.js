@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   sagaExample: sagaLoginReducer,
   getDashboard: getDashboard,
-  setValuesReducer: setValuesReducer,
+  setValues: setValuesReducer,
   form: formReducer,
 });
 

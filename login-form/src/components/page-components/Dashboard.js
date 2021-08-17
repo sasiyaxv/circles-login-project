@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
     name: state.getDashboard.name,
     origin: state.getDashboard.origin,
     isLoading: state.getDashboard.isLoading,
-    dashBoardHeader: state.setValuesReducer.dashBoardHeader,
+    dashBoardHeader: state.setValues?.dashBoardHeader,
   };
 };
 

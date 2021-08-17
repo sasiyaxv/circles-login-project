@@ -105,8 +105,8 @@ const mapStateToProps = (state) => {
   return {
     userName: state.form?.loginForm?.values?.userName,
     passWord: state.form?.loginForm?.values?.passWord,
-    loginHeader: state.setValuesReducer.loginHeader,
-    loginSubHeader: state.setValuesReducer.loginSubHeader,
+    loginHeader: state.setValues?.loginHeader,
+    loginSubHeader: state.setValues?.loginSubHeader,
   };
 };
 
