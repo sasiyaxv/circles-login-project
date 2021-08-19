@@ -7,6 +7,7 @@ import {
   FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
   GET_SETTINGS_ACTION,
   GET_SETTINGS_ACTION_SUCCESS,
+  GET_SETTINGS_ACTION_FAIL,
 } from "./actionTypes";
 
 export function incrementBy(payload) {
@@ -57,12 +58,20 @@ export function dashboardSuccess(user) {
 export function getDataConfigAction() {
   return {
     type: GET_SETTINGS_ACTION,
+    payload: {},
   };
 }
 
 export function getDataConfigActionSuccess(dataObj) {
   return {
     type: GET_SETTINGS_ACTION_SUCCESS,
+    payload: dataObj,
+  };
+}
+
+export function getDataConfigActionFail(dataObj) {
+  return {
+    type: GET_SETTINGS_ACTION_FAIL,
     payload: dataObj,
   };
 }

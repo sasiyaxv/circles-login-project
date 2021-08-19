@@ -5,6 +5,7 @@ import { Box } from "rebass";
 import { getDashboardData } from "../../redux/actions";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
+import { LoadingScreen } from "./LoadingScreen";
 
 const Dashboard = ({
   getDashboard,
@@ -51,7 +52,7 @@ const Dashboard = ({
          Origin Port : ${origin}`}
           />
         ) : (
-          "isLoading..."
+          ("isLoading...", (<LoadingScreen />))
         )}
       </Box>
     </Box>

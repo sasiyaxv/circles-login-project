@@ -5,6 +5,8 @@ import { compose } from "redux";
 import { sagaLogin, getDataConfigAction } from "../../redux/actions";
 import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
+import { LoadingScreen } from "../../components/page-components/LoadingScreen";
+import { ErrorPage } from "../../components/page-components/ErrorPage";
 import "./formCss.css";
 
 let LoginReduxForm = (props) => {
@@ -18,6 +20,8 @@ let LoginReduxForm = (props) => {
     getLoginDataConfig,
     loginHeader,
     loginSubHeader,
+    isLoading,
+    isError,
   } = props;
 
   useEffect(() => {
@@ -34,63 +38,80 @@ let LoginReduxForm = (props) => {
   };
 
   return (
-    <form className="form-container" onSubmit={handleSubmit(wrappedLoginSaga)}>
-      <RebassHeading
-        name={loginHeader}
-        fontSize={[5, 6, 7]}
-        textAlign="center"
-      />
-      <RebassHeading
-        fontSize={[3, 4, 5]}
-        marginBottom={[2, 3, 4]}
-        name={loginSubHeader}
-      />
-      <div>
-        <RebassLabel
-          fontSize={[2, 3, 4]}
-          marginBottom={[1, 2, 3]}
-          name={"Username"}
-          htmlFor="userName"
+    // {!isError ? ( ) : (
+    //   <ErrorPage />
+    // )}
+    <div>
+      {!isLoading ? (
+        <RebassHeading
+          name={loginHeader}
+          fontSize={[5, 6, 7]}
+          textAlign="center"
         />
-        <br />
-        <Field
-          className="form-field"
-          type="text"
-          name="userName"
-          component="input"
+      ) : (
+        <LoadingScreen />
+      )}
+      {!isLoading ? (
+        <RebassHeading
+          fontSize={[3, 4, 5]}
+          marginBottom={[2, 3, 4]}
+          name={loginSubHeader}
         />
-      </div>
-      <div>
-        <RebassLabel
-          fontSize={[2, 3, 4]}
-          marginBottom={[1, 2, 3]}
-          name={"Password"}
-          htmlFor="passWord"
-        />
-        <br />
+      ) : (
+        <LoadingScreen />
+      )}
+      <form
+        className="form-container"
+        onSubmit={handleSubmit(wrappedLoginSaga)}
+      >
+        <div>
+          <RebassLabel
+            fontSize={[2, 3, 4]}
+            marginBottom={[1, 2, 3]}
+            name={"Username"}
+            htmlFor="userName"
+          />
 
-        <Field
-          className="form-field"
-          type="password"
-          name="passWord"
-          component="input"
-        />
-      </div>
-      <br />
-      <button className="form-submit-btn" type="submit">
-        Submit
-      </button>
-      <button className="form-reset-btn" type="reset" onClick={resetClicked}>
-        Reset
-      </button>
-    </form>
+          <br />
+          <Field
+            className="form-field"
+            type="text"
+            name="userName"
+            component="input"
+          />
+        </div>
+        <div>
+          <RebassLabel
+            fontSize={[2, 3, 4]}
+            marginBottom={[1, 2, 3]}
+            name={"Password"}
+            htmlFor="passWord"
+          />
+          <br />
+
+          <Field
+            className="form-field"
+            type="password"
+            name="passWord"
+            component="input"
+          />
+        </div>
+        <br />
+        <button className="form-submit-btn" type="submit">
+          Submit
+        </button>
+        <button className="form-reset-btn" type="reset" onClick={resetClicked}>
+          Reset
+        </button>
+      </form>
+    </div>
   );
 };
 
 // Validations for the login form
 const validations = (values) => {
   const errors = {};
-  if (!values.userName && !values.passWord) {
+  if (!values.userName || !values.passWord) {
     errors.userName = "Required";
     errors.passWord = "Required";
   } else if (values.passWord?.length <= 8) {
@@ -101,12 +122,13 @@ const validations = (values) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("stateREDUXFORM", state);
   return {
     userName: state.form?.loginForm?.values?.userName,
     passWord: state.form?.loginForm?.values?.passWord,
     loginHeader: state.setValues?.loginHeader,
     loginSubHeader: state.setValues?.loginSubHeader,
+    isLoading: state.setValues?.isLoading,
+    isError: state.setValues?.isError,
   };
 };
 

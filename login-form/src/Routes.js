@@ -11,6 +11,8 @@ import Dashboard from "./components/page-components/Dashboard";
 import { ROUTES } from "./constants";
 // import { login } from "./redux/actions";
 import LoginReduxFormTest from "./redux/redux-form/LoginReduxForm";
+import { ErrorPage } from "../src/components/page-components/ErrorPage";
+import ReduxFormWrapper from "./redux/redux-form/ReduxFormWrapper";
 
 export const Routes = () => {
   const history = useHistory();
@@ -21,7 +23,7 @@ export const Routes = () => {
           <Route
             exact
             path={ROUTES.routeToLogin}
-            component={LoginReduxFormTest}
+            component={ReduxFormWrapper}
           />
 
           <Route exact path="/dashboard" component={Dashboard} />

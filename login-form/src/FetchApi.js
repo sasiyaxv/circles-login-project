@@ -1,4 +1,5 @@
-import { ROUTES, API_PATHS, BASE_URL } from "./constants";
+import { API_PATHS, BASE_URL } from "./constants";
+import { ErrorPage } from "./components/page-components/ErrorPage";
 
 const axios = require("axios");
 
@@ -16,12 +17,15 @@ export const fetchSettingsData = () => {
       return configObj;
     })
     .catch(function (error) {
-      console.log(error);
-      return {
+      console.log("ERROR FOUND", error);
+      // return <ErrorPage />;
+      // return <h1>Something went wrong.</h1>;
+      let configObj = {
         loginHeader: "",
         subLoginHeader: "",
         dashboardHeader: "",
       };
+      return configObj;
     });
 };
 
@@ -37,7 +41,7 @@ export const doFetch = (userName, passWord) => {
     })
     .catch(function (error) {
       console.log(error);
-      return " ";
+      return <ErrorPage />;
     });
 };
 export const doFetchUserData = () => {
@@ -57,10 +61,6 @@ export const doFetchUserData = () => {
     })
     .catch((err) => {
       console.log(err);
-      return {
-        email: "",
-        name: "",
-        origin: "",
-      };
+      return <ErrorPage />;
     });
 };

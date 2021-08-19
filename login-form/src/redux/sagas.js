@@ -7,6 +7,7 @@ import {
   GET_SETTINGS_ACTION_SUCCESS,
   FETCH_DASHBOARD_DATA_ACTION,
   FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
+  GET_SETTINGS_ACTION_FAIL,
 } from "./actions/actionTypes";
 
 // REMEMBER TO ADD 2 TYPES OF ACTIONS
@@ -14,7 +15,12 @@ import {
 export function* getSettingsSaga() {
   try {
     const dataObj = yield call(fetchSettingsData);
-    yield put({ type: GET_SETTINGS_ACTION_SUCCESS, payload: dataObj });
+    if (dataObj.loginHeader == "") {
+      console.log("LOGIN HEADER IS NULL");
+      yield put({ type: GET_SETTINGS_ACTION_FAIL, payload: dataObj });
+    } else {
+      yield put({ type: GET_SETTINGS_ACTION_SUCCESS, payload: dataObj });
+    }
   } catch (e) {}
 }
 

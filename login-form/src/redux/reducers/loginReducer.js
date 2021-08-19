@@ -7,12 +7,15 @@ import {
   FETCH_DASHBOARD_DATA_ACTION_SUCCESS,
   GET_SETTINGS_ACTION,
   GET_SETTINGS_ACTION_SUCCESS,
+  GET_SETTINGS_ACTION_FAIL,
 } from "../actions/actionTypes";
 
 const initialValuesConfig = {
   loginHeader: null,
   loginSubHeader: null,
   dashBoardHeader: null,
+  isLoading: false,
+  isError: false,
 };
 
 const initialState = {
@@ -40,13 +43,22 @@ const dashboardData = {
 export function setValuesReducer(state = initialValuesConfig, action) {
   switch (action.type) {
     case GET_SETTINGS_ACTION:
-      return {};
+      return {
+        ...state,
+        isLoading: true,
+      };
     case GET_SETTINGS_ACTION_SUCCESS:
       return {
         ...state,
         loginHeader: action.payload.loginHeader,
         loginSubHeader: action.payload.subLoginHeader,
         dashBoardHeader: action.payload.dashboardHeader,
+        isLoading: false,
+      };
+    case GET_SETTINGS_ACTION_FAIL:
+      return {
+        ...state,
+        isError: true,
       };
     default:
       return state;
