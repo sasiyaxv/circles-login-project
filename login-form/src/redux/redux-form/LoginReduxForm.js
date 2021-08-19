@@ -40,9 +40,9 @@ let LoginReduxForm = (props) => {
   return (
     <div>
       {!isError ? (
-        <div>
+        <>
           {!isLoading ? (
-            <div>
+            <>
               <RebassHeading
                 name={loginHeader}
                 fontSize={[5, 6, 7]}
@@ -53,7 +53,7 @@ let LoginReduxForm = (props) => {
                 marginBottom={[2, 3, 4]}
                 name={loginSubHeader}
               />
-            </div>
+            </>
           ) : (
             <LoadingScreen />
           )}
@@ -106,7 +106,7 @@ let LoginReduxForm = (props) => {
               Reset
             </button>
           </form>
-        </div>
+        </>
       ) : (
         <ErrorPage />
       )}
