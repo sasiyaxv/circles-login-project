@@ -38,75 +38,86 @@ let LoginReduxForm = (props) => {
   };
 
   return (
-    // {!isError ? ( ) : (
-    //   <ErrorPage />
-    // )}
     <div>
-      {!isLoading ? (
-        <RebassHeading
-          name={loginHeader}
-          fontSize={[5, 6, 7]}
-          textAlign="center"
-        />
-      ) : (
-        <LoadingScreen />
-      )}
-      {!isLoading ? (
-        <RebassHeading
-          fontSize={[3, 4, 5]}
-          marginBottom={[2, 3, 4]}
-          name={loginSubHeader}
-        />
-      ) : (
-        <LoadingScreen />
-      )}
-      <form
-        className="form-container"
-        onSubmit={handleSubmit(wrappedLoginSaga)}
-      >
+      {!isError ? (
         <div>
-          <RebassLabel
-            fontSize={[2, 3, 4]}
-            marginBottom={[1, 2, 3]}
-            name={"Username"}
-            htmlFor="userName"
-          />
+          {!isLoading ? (
+            <div>
+              <RebassHeading
+                name={loginHeader}
+                fontSize={[5, 6, 7]}
+                textAlign="center"
+              />
+              <RebassHeading
+                fontSize={[3, 4, 5]}
+                marginBottom={[2, 3, 4]}
+                name={loginSubHeader}
+              />
+            </div>
+          ) : (
+            <LoadingScreen />
+          )}
 
-          <br />
-          <Field
-            className="form-field"
-            type="text"
-            name="userName"
-            component="input"
-          />
-        </div>
-        <div>
-          <RebassLabel
-            fontSize={[2, 3, 4]}
-            marginBottom={[1, 2, 3]}
-            name={"Password"}
-            htmlFor="passWord"
-          />
-          <br />
+          <form
+            className="form-container"
+            onSubmit={handleSubmit(wrappedLoginSaga)}
+          >
+            <div>
+              <RebassLabel
+                fontSize={[2, 3, 4]}
+                marginBottom={[1, 2, 3]}
+                name={"Username"}
+                htmlFor="userName"
+              />
 
-          <Field
-            className="form-field"
-            type="password"
-            name="passWord"
-            component="input"
-          />
+              <br />
+              <Field
+                className="form-field"
+                type="text"
+                name="userName"
+                component="input"
+              />
+            </div>
+            <div>
+              <RebassLabel
+                fontSize={[2, 3, 4]}
+                marginBottom={[1, 2, 3]}
+                name={"Password"}
+                htmlFor="passWord"
+              />
+              <br />
+
+              <Field
+                className="form-field"
+                type="password"
+                name="passWord"
+                component="input"
+              />
+            </div>
+            <br />
+            <button className="form-submit-btn" type="submit">
+              Submit
+            </button>
+            <button
+              className="form-reset-btn"
+              type="reset"
+              onClick={resetClicked}
+            >
+              Reset
+            </button>
+          </form>
         </div>
-        <br />
-        <button className="form-submit-btn" type="submit">
-          Submit
-        </button>
-        <button className="form-reset-btn" type="reset" onClick={resetClicked}>
-          Reset
-        </button>
-      </form>
+      ) : (
+        <ErrorPage />
+      )}
     </div>
   );
 };
+
+// export const LoginReduxFormWrapper = (isError) => {
+//   console.log("ISERROR", isError);
+//   return <div>{!isError ? <LoginReduxForm /> : <ErrorPage />}</div>;
+// };
 
 // Validations for the login form
 const validations = (values) => {

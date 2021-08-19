@@ -12,7 +12,7 @@ import { ROUTES } from "./constants";
 // import { login } from "./redux/actions";
 import LoginReduxFormTest from "./redux/redux-form/LoginReduxForm";
 import { ErrorPage } from "../src/components/page-components/ErrorPage";
-import ReduxFormWrapper from "./redux/redux-form/ReduxFormWrapper";
+import { LoginReduxFormWrapper } from "./redux/redux-form/LoginReduxForm";
 
 export const Routes = () => {
   const history = useHistory();
@@ -23,7 +23,7 @@ export const Routes = () => {
           <Route
             exact
             path={ROUTES.routeToLogin}
-            component={ReduxFormWrapper}
+            component={LoginReduxFormTest}
           />
 
           <Route exact path="/dashboard" component={Dashboard} />
