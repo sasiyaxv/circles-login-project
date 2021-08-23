@@ -132,14 +132,38 @@ const validations = (values) => {
   return errors;
 };
 
+const selectUserName = (state) => {
+  return state.form?.loginForm?.values?.userName;
+};
+
+const selectPassWord = (state) => {
+  return state.form?.loginForm?.values?.passWord;
+};
+
+const selectLoginHeader = (state) => {
+  return state.setValues?.loginHeader;
+};
+
+const selectLoginSubHeader = (state) => {
+  return state.setValues?.loginSubHeader;
+};
+
+const selectIsLoading = (state) => {
+  return state.setValues?.isLoading;
+};
+
+const selectIsError = (state) => {
+  return state.setValues?.isError;
+};
+
 const mapStateToProps = (state) => {
   return {
-    userName: state.form?.loginForm?.values?.userName,
-    passWord: state.form?.loginForm?.values?.passWord,
-    loginHeader: state.setValues?.loginHeader,
-    loginSubHeader: state.setValues?.loginSubHeader,
-    isLoading: state.setValues?.isLoading,
-    isError: state.setValues?.isError,
+    userName: selectUserName(state),
+    passWord: selectPassWord(state),
+    loginHeader: selectLoginHeader(state),
+    loginSubHeader: selectLoginSubHeader(state),
+    isLoading: selectIsLoading(state),
+    isError: selectIsError(state),
   };
 };
 

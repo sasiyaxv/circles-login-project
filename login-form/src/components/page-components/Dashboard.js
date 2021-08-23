@@ -59,14 +59,34 @@ const Dashboard = ({
   );
 };
 
+const selectEmail = (state) => {
+  return state.getDashboard.email;
+};
+
+const selectName = (state) => {
+  return state.getDashboard.name;
+};
+
+const selectOrigin = (state) => {
+  return state.getDashboard.origin;
+};
+
+const selectIsLoading = (state) => {
+  return state.getDashboard.isLoading;
+};
+
+const selectDashboardHeader = (state) => {
+  return state.setValues?.dashBoardHeader;
+};
+
 const mapStateToProps = (state) => {
   console.log("state", state);
   return {
-    email: state.getDashboard.email,
-    name: state.getDashboard.name,
-    origin: state.getDashboard.origin,
-    isLoading: state.getDashboard.isLoading,
-    dashBoardHeader: state.setValues?.dashBoardHeader,
+    email: selectEmail(state),
+    name: selectName(state),
+    origin: selectOrigin(state),
+    isLoading: selectIsLoading(state),
+    dashBoardHeader: selectDashboardHeader(state),
   };
 };
 
