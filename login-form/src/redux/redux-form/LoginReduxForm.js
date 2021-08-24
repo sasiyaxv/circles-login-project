@@ -167,7 +167,7 @@ export default compose(
   withConnect,
   reduxForm({
     validate: validations,
-    form: "loginForm", // a unique identifier for this form | function declaration would be invalid, if we didn’t specify any name:
+    form: "loginForm",
   })
 )(LoginReduxForm);
 

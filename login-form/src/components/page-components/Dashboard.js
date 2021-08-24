@@ -13,19 +13,7 @@ import {
   selectDashboardHeader,
 } from "../../redux/selectors/dashboardReselectors";
 
-const Dashboard = ({
-  getDashboard,
-  email,
-  name,
-  origin,
-  isLoading,
-  dashBoardHeader,
-}) => {
-  useEffect(() => {
-    const user = getDashboard();
-    console.log("NEWUSER", user);
-  }, []);
-
+const Dashboard = ({ email, name, origin, isLoading, dashBoardHeader }) => {
   return (
     <Box m={[2, 3, 4]}>
       <RebassHeading
@@ -66,7 +54,6 @@ const Dashboard = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
   return {
     email: selectEmail(state),
     name: selectName(state),
@@ -85,12 +72,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
-// email: getUserEmailSelector()
-// function getDashboardDomainSelector(state) {
-//   return state.getDashboard
-// }
-
-// function getUserEmailSelector(state) {
-//   return getDashboardDomainSelector(state).email
-// }
