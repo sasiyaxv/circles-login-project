@@ -7,6 +7,14 @@ import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
 import { LoadingScreen } from "../../components/page-components/LoadingScreen";
 import { ErrorPage } from "../../components/page-components/ErrorPage";
+import {
+  reselectUserName,
+  reselectPassWord,
+  reselectLoginHeader,
+  reselectLoginSubHeader,
+  reselectIsLoading,
+  reselectIsError,
+} from "../selectors/loginReselectors";
 import "./formCss.css";
 
 let LoginReduxForm = (props) => {
@@ -114,11 +122,6 @@ let LoginReduxForm = (props) => {
   );
 };
 
-// export const LoginReduxFormWrapper = (isError) => {
-//   console.log("ISERROR", isError);
-//   return <div>{!isError ? <LoginReduxForm /> : <ErrorPage />}</div>;
-// };
-
 // Validations for the login form
 const validations = (values) => {
   const errors = {};
@@ -132,38 +135,14 @@ const validations = (values) => {
   return errors;
 };
 
-const selectUserName = (state) => {
-  return state.form?.loginForm?.values?.userName;
-};
-
-const selectPassWord = (state) => {
-  return state.form?.loginForm?.values?.passWord;
-};
-
-const selectLoginHeader = (state) => {
-  return state.setValues?.loginHeader;
-};
-
-const selectLoginSubHeader = (state) => {
-  return state.setValues?.loginSubHeader;
-};
-
-const selectIsLoading = (state) => {
-  return state.setValues?.isLoading;
-};
-
-const selectIsError = (state) => {
-  return state.setValues?.isError;
-};
-
 const mapStateToProps = (state) => {
   return {
-    userName: selectUserName(state),
-    passWord: selectPassWord(state),
-    loginHeader: selectLoginHeader(state),
-    loginSubHeader: selectLoginSubHeader(state),
-    isLoading: selectIsLoading(state),
-    isError: selectIsError(state),
+    userName: reselectUserName(state),
+    passWord: reselectPassWord(state),
+    loginHeader: reselectLoginHeader(state),
+    loginSubHeader: reselectLoginSubHeader(state),
+    isLoading: reselectIsLoading(state),
+    isError: reselectIsError(state),
   };
 };
 
