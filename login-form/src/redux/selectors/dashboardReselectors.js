@@ -1,36 +1,26 @@
 import { createSelector } from "reselect";
 
-export const reselectEmail = createSelector(
+export const selectEmail = createSelector(
   (state) => state.getDashboard.email,
-  (email) => {
-    return email;
-  }
+  (email) => email
 );
 
-export const reselectName = createSelector(
+export const selectName = createSelector(
   (state) => state.getDashboard.name,
-  (name) => {
-    return name;
-  }
+  (name) => name
 );
 
-export const reselectOrigin = createSelector(
+export const selectOrigin = createSelector(
   (state) => state.getDashboard.origin,
-  (origin) => {
-    return origin;
-  }
+  (origin) => origin
 );
 
-export const reselectIsLoading = createSelector(
+export const selectIsLoading = createSelector(
   (state) => state.getDashboard.isLoading,
-  (isLoading) => {
-    return isLoading;
-  }
+  (isLoading) => isLoading
 );
 
-export const reselectDashboardHeader = createSelector(
+export const selectDashboardHeader = createSelector(
   (state) => state.setValues?.dashBoardHeader,
-  (dashBoardHeader) => {
-    return dashBoardHeader;
-  }
+  (dashBoardHeader) => dashBoardHeader
 );

@@ -8,12 +8,12 @@ import { RebassLabel } from "../../components/ui-components/RebassLabel";
 import { LoadingScreen } from "../../components/page-components/LoadingScreen";
 import { ErrorPage } from "../../components/page-components/ErrorPage";
 import {
-  reselectUserName,
-  reselectPassWord,
-  reselectLoginHeader,
-  reselectLoginSubHeader,
-  reselectIsLoading,
-  reselectIsError,
+  selectUserName,
+  selectPassWord,
+  selectLoginHeader,
+  selectLoginSubHeader,
+  selectIsLoading,
+  selectIsError,
 } from "../selectors/loginReselectors";
 import "./formCss.css";
 
@@ -137,12 +137,12 @@ const validations = (values) => {
 
 const mapStateToProps = (state) => {
   return {
-    userName: reselectUserName(state),
-    passWord: reselectPassWord(state),
-    loginHeader: reselectLoginHeader(state),
-    loginSubHeader: reselectLoginSubHeader(state),
-    isLoading: reselectIsLoading(state),
-    isError: reselectIsError(state),
+    userName: selectUserName(state),
+    passWord: selectPassWord(state),
+    loginHeader: selectLoginHeader(state),
+    loginSubHeader: selectLoginSubHeader(state),
+    isLoading: selectIsLoading(state),
+    isError: selectIsError(state),
   };
 };
 

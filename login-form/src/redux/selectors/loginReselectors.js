@@ -1,43 +1,31 @@
 import { createSelector } from "reselect";
 
-export const reselectUserName = createSelector(
+export const selectUserName = createSelector(
   (state) => state.form?.loginForm?.values?.userName,
-  (userName) => {
-    return userName;
-  }
+  (userName) => userName
 );
 
-export const reselectPassWord = createSelector(
+export const selectPassWord = createSelector(
   (state) => state.form?.loginForm?.values?.passWord,
-  (passWord) => {
-    return passWord;
-  }
+  (passWord) => passWord
 );
 
-export const reselectLoginHeader = createSelector(
+export const selectLoginHeader = createSelector(
   (state) => state?.setValues?.loginHeader,
-  (loginHeader) => {
-    return loginHeader;
-  }
+  (loginHeader) => loginHeader
 );
 
-export const reselectLoginSubHeader = createSelector(
+export const selectLoginSubHeader = createSelector(
   (state) => state.setValues?.loginSubHeader,
-  (loginSubHeader) => {
-    return loginSubHeader;
-  }
+  (loginSubHeader) => loginSubHeader
 );
 
-export const reselectIsLoading = createSelector(
+export const selectIsLoading = createSelector(
   (state) => state.setValues?.isLoading,
-  (isLoading) => {
-    return isLoading;
-  }
+  (isLoading) => isLoading
 );
 
-export const reselectIsError = createSelector(
+export const selectIsError = createSelector(
   (state) => state.setValues?.isError,
-  (isError) => {
-    return isError;
-  }
+  (isError) => isError
 );

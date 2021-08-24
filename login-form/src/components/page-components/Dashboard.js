@@ -6,11 +6,11 @@ import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { LoadingScreen } from "./LoadingScreen";
 import {
-  reselectEmail,
-  reselectName,
-  reselectOrigin,
-  reselectIsLoading,
-  reselectDashboardHeader,
+  selectEmail,
+  selectName,
+  selectOrigin,
+  selectIsLoading,
+  selectDashboardHeader,
 } from "../../redux/selectors/dashboardReselectors";
 
 const Dashboard = ({
@@ -68,11 +68,11 @@ const Dashboard = ({
 const mapStateToProps = (state) => {
   console.log("state", state);
   return {
-    email: reselectEmail(state),
-    name: reselectName(state),
-    origin: reselectOrigin(state),
-    isLoading: reselectIsLoading(state),
-    dashBoardHeader: reselectDashboardHeader(state),
+    email: selectEmail(state),
+    name: selectName(state),
+    origin: selectOrigin(state),
+    isLoading: selectIsLoading(state),
+    dashBoardHeader: selectDashboardHeader(state),
   };
 };
 
