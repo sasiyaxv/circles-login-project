@@ -7,6 +7,14 @@ import { RebassHeading } from "../../components/ui-components/RebassHeading";
 import { RebassLabel } from "../../components/ui-components/RebassLabel";
 import { LoadingScreen } from "../../components/page-components/LoadingScreen";
 import { ErrorPage } from "../../components/page-components/ErrorPage";
+import {
+  selectUserName,
+  selectPassWord,
+  selectLoginHeader,
+  selectLoginSubHeader,
+  selectIsLoading,
+  selectIsError,
+} from "../selectors/loginReselectors";
 import "./formCss.css";
 
 let LoginReduxForm = (props) => {
@@ -114,11 +122,6 @@ let LoginReduxForm = (props) => {
   );
 };
 
-// export const LoginReduxFormWrapper = (isError) => {
-//   console.log("ISERROR", isError);
-//   return <div>{!isError ? <LoginReduxForm /> : <ErrorPage />}</div>;
-// };
-
 // Validations for the login form
 const validations = (values) => {
   const errors = {};
@@ -134,12 +137,12 @@ const validations = (values) => {
 
 const mapStateToProps = (state) => {
   return {
-    userName: state.form?.loginForm?.values?.userName,
-    passWord: state.form?.loginForm?.values?.passWord,
-    loginHeader: state.setValues?.loginHeader,
-    loginSubHeader: state.setValues?.loginSubHeader,
-    isLoading: state.setValues?.isLoading,
-    isError: state.setValues?.isError,
+    userName: selectUserName(state),
+    passWord: selectPassWord(state),
+    loginHeader: selectLoginHeader(state),
+    loginSubHeader: selectLoginSubHeader(state),
+    isLoading: selectIsLoading(state),
+    isError: selectIsError(state),
   };
 };
 
@@ -164,7 +167,7 @@ export default compose(
   withConnect,
   reduxForm({
     validate: validations,
-    form: "loginForm", // a unique identifier for this form | function declaration would be invalid, if we didn’t specify any name:
+    form: "loginForm",
   })
 )(LoginReduxForm);
 

@@ -1,25 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Box } from "rebass";
-
 import { getDashboardData } from "../../redux/actions";
 import { RebassHeading } from "../ui-components/RebassHeading";
 import { RebassLabel } from "../ui-components/RebassLabel";
 import { LoadingScreen } from "./LoadingScreen";
+import {
+  selectEmail,
+  selectName,
+  selectOrigin,
+  selectIsLoading,
+  selectDashboardHeader,
+} from "../../redux/selectors/dashboardReselectors";
 
-const Dashboard = ({
-  getDashboard,
-  email,
-  name,
-  origin,
-  isLoading,
-  dashBoardHeader,
-}) => {
-  useEffect(() => {
-    const user = getDashboard();
-    console.log("NEWUSER", user);
-  }, []);
-
+const Dashboard = ({ email, name, origin, isLoading, dashBoardHeader }) => {
   return (
     <Box m={[2, 3, 4]}>
       <RebassHeading
@@ -60,13 +54,12 @@ const Dashboard = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
   return {
-    email: state.getDashboard.email,
-    name: state.getDashboard.name,
-    origin: state.getDashboard.origin,
-    isLoading: state.getDashboard.isLoading,
-    dashBoardHeader: state.setValues?.dashBoardHeader,
+    email: selectEmail(state),
+    name: selectName(state),
+    origin: selectOrigin(state),
+    isLoading: selectIsLoading(state),
+    dashBoardHeader: selectDashboardHeader(state),
   };
 };
 
@@ -79,12 +72,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
-// email: getUserEmailSelector()
-// function getDashboardDomainSelector(state) {
-//   return state.getDashboard
-// }
-
-// function getUserEmailSelector(state) {
-//   return getDashboardDomainSelector(state).email
-// }
