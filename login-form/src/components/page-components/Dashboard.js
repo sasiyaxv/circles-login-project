@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Box } from "rebass";
+
 import { getDashboardData } from "../../redux/actions";
-import { RebassHeading } from "../ui-components/RebassHeading";
-import { RebassLabel } from "../ui-components/RebassLabel";
-import { LoadingScreen } from "./LoadingScreen";
 import {
   selectEmail,
   selectName,
@@ -13,7 +11,22 @@ import {
   selectDashboardHeader,
 } from "../../redux/selectors/dashboardReselectors";
 
-const Dashboard = ({ email, name, origin, isLoading, dashBoardHeader }) => {
+import { RebassHeading } from "../ui-components/RebassHeading";
+import { RebassLabel } from "../ui-components/RebassLabel";
+import { LoadingScreen } from "./LoadingScreen";
+
+const Dashboard = ({
+  getDashboard,
+  email,
+  name,
+  origin,
+  isLoading,
+  dashBoardHeader,
+}) => {
+  useEffect(() => {
+    const user = getDashboard();
+    console.log("NEWUSER", user);
+  }, []);
   return (
     <Box m={[2, 3, 4]}>
       <RebassHeading

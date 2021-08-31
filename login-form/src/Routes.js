@@ -6,13 +6,11 @@ import {
   Switch,
   useHistory,
 } from "react-router-dom";
-import Login from "./components/page-components/Login";
-import Dashboard from "./components/page-components/Dashboard";
+
 import { ROUTES } from "./constants";
-// import { login } from "./redux/actions";
+
+import Dashboard from "./components/page-components/Dashboard";
 import LoginReduxFormTest from "./redux/redux-form/LoginReduxForm";
-import { ErrorPage } from "../src/components/page-components/ErrorPage";
-import { LoginReduxFormWrapper } from "./redux/redux-form/LoginReduxForm";
 
 export const Routes = () => {
   const history = useHistory();
@@ -22,12 +20,10 @@ export const Routes = () => {
         <Switch>
           <Route
             exact
-            path={ROUTES.routeToLogin}
+            path={ROUTES.ROUTE_TO_LOGIN}
             component={LoginReduxFormTest}
           />
-
           <Route exact path="/dashboard" component={Dashboard} />
-
           <Redirect exact from="/" to="login" />
         </Switch>
       </Router>

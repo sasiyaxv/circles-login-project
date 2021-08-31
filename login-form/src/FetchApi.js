@@ -5,27 +5,20 @@ const axios = require("axios");
 
 export const fetchSettingsData = () => {
   return axios
-    .get(BASE_URL + API_PATHS.appSettings, {})
+    .get(BASE_URL + API_PATHS.APP_SETTINGS, {})
     .then(function (response) {
-      console.log("Initial values : ", response);
-      let configObj = {
+      return {
         loginHeader: response.data.login?.loginHeader,
         subLoginHeader: response.data.login?.subLoginHeader,
         dashboardHeader: response.data.dashboard?.dashboardHeader,
       };
-      console.log("VALUES", configObj);
-      return configObj;
     })
     .catch(function (error) {
-      console.log("ERROR FOUND", error);
-      // return <ErrorPage />;
-      // return <h1>Something went wrong.</h1>;
-      let configObj = {
+      return {
         loginHeader: "",
         subLoginHeader: "",
         dashboardHeader: "",
       };
-      return configObj;
     });
 };
 
@@ -36,7 +29,6 @@ export const doFetch = (userName, passWord) => {
       passWord: passWord,
     })
     .then(function (response) {
-      console.log(response);
       return response.data;
     })
     .catch(function (error) {
@@ -48,16 +40,11 @@ export const doFetchUserData = () => {
   return axios
     .get(BASE_URL + API_PATHS.dashboard)
     .then(function (response) {
-      console.log("RESPONSE", response);
-      console.log("EMAIL", response.email);
-
-      let userObj = {
+      return {
         email: response.data.email,
         name: response.data.name,
         origin: response.data.origin,
       };
-
-      return userObj;
     })
     .catch((err) => {
       console.log(err);

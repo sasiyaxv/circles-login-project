@@ -4,13 +4,13 @@ import { Input } from "@rebass/forms";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { RebassHeading } from "../ui-components/RebassHeading";
-import { RebassLabel } from "../ui-components/RebassLabel";
 import { errorMessages } from "../../constants";
 import { incrementBy, login, sagaLogin } from "../../redux/actions";
 
+import { RebassHeading } from "../ui-components/RebassHeading";
+import { RebassLabel } from "../ui-components/RebassLabel";
+
 const Login = (props) => {
-  console.log("Props", props);
   const { loginResponse, loginSaga } = props;
 
   const [userName, setUserName] = useState("");
@@ -19,7 +19,6 @@ const Login = (props) => {
   const [responseMessage, setResponseMessage] = useState("");
 
   useEffect(() => {
-    if (loginResponse === undefined) return;
     if (loginResponse === "success") {
       history.push("/dashboard");
     } else {
@@ -31,16 +30,9 @@ const Login = (props) => {
   const history = useHistory();
 
   async function loginClicked(e) {
-    // props.incrementBy10();
-
     e.preventDefault();
 
     const user = loginSaga(userName, passWord);
-
-    console.log("USER", user);
-    console.log("Login Clicked");
-    console.log("Email : " + userName);
-    console.log("Password : " + passWord);
   }
 
   return (
@@ -146,9 +138,6 @@ const Login = (props) => {
               {responseMessage}
             </Box>
           </Box>
-          {/* <div>
-            {props.grandTotal}
-          </div> */}
         </form>
       </Box>
     </Box>
@@ -175,7 +164,7 @@ const mapDispatchToProps = (dispatch) => {
     loginNow: (userName, passWord) => {
       dispatch(login(userName, passWord));
     },
-    loginSaga: (userName, passWord) => {
+    loginNew: (userName, passWord) => {
       dispatch(sagaLogin(userName, passWord));
     },
   };

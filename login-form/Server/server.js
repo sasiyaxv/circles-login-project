@@ -32,10 +32,6 @@ app.get("/user-service/user-details", async (req, res) => {
 app.get("/user-service/login/:username/:password", (req, res) => {
   let username = req.params.username;
   let password = req.params.password;
-
-  console.log(username);
-  console.log(password);
-
   if (
     username.trim() === "admin@circles.asia" &&
     password.trim() === "circles111"

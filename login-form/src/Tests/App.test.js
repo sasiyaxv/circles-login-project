@@ -1,14 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import App from "../App";
+import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-// import Store from "../../src/store/storeConfiguration/Store";
-import store from "../app/store"
 
-// test("renders learn react link", () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+import store from "../app/store";
+import App from "../App";
 
 test("Check if initial values and components are loaded", () => {
   render(

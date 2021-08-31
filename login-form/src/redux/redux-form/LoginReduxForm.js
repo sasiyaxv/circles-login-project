@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
+
+import { ROUTES } from "../../constants";
+
 import { sagaLogin, getDataConfigAction } from "../../redux/actions";
-import { RebassHeading } from "../../components/ui-components/RebassHeading";
-import { RebassLabel } from "../../components/ui-components/RebassLabel";
-import { LoadingScreen } from "../../components/page-components/LoadingScreen";
-import { ErrorPage } from "../../components/page-components/ErrorPage";
 import {
   selectUserName,
   selectPassWord,
@@ -15,6 +14,13 @@ import {
   selectIsLoading,
   selectIsError,
 } from "../selectors/loginReselectors";
+
+import { RebassHeading } from "../../components/ui-components/RebassHeading";
+import { RebassLabel } from "../../components/ui-components/RebassLabel";
+
+import { LoadingScreen } from "../../components/page-components/LoadingScreen";
+import { ErrorPage } from "../../components/page-components/ErrorPage";
+
 import "./formCss.css";
 
 let LoginReduxForm = (props) => {
@@ -46,7 +52,7 @@ let LoginReduxForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       {!isError ? (
         <>
           {!isLoading ? (
@@ -151,7 +157,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     loginSaga: (userName, passWord) => {
       dispatch(
         sagaLogin(userName, passWord, () => {
-          ownProps.history.push("/dashboard");
+          ownProps.history.push(ROUTES.ROUTE_TO_DASHBOARD);
         })
       );
     },
